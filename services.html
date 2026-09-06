@@ -13,10 +13,6 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     font-family:Arial,"Noto Sans Bengali",sans-serif;
     background:#f5f7fb;
@@ -31,7 +27,8 @@ a{
 
 button,
 input,
-textarea{
+textarea,
+select{
     font-family:inherit;
 }
 
@@ -53,14 +50,13 @@ header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:20px;
 }
 
 .logo{
     display:flex;
     align-items:center;
     gap:10px;
-    font-size:22px;
+    font-size:21px;
     font-weight:800;
     color:#1167d8;
 }
@@ -68,28 +64,26 @@ header{
 .logo-icon{
     width:40px;
     height:40px;
-    border-radius:12px;
+    border-radius:11px;
     background:#1167d8;
     color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:18px;
+    font-size:17px;
 }
 
 .nav-links{
     display:flex;
-    align-items:center;
     gap:8px;
     list-style:none;
 }
 
 .nav-links a{
-    display:block;
     padding:9px 14px;
     border-radius:8px;
+    color:#4d596b;
     font-size:15px;
-    color:#4a5568;
 }
 
 .nav-links a:hover,
@@ -100,14 +94,13 @@ header{
 
 .menu-btn{
     display:none;
-    border:0;
-    background:#edf5ff;
-    color:#1167d8;
     width:42px;
     height:42px;
+    border:0;
     border-radius:10px;
+    background:#edf5ff;
+    color:#1167d8;
     font-size:22px;
-    cursor:pointer;
 }
 
 .page-header{
@@ -122,9 +115,9 @@ header{
 }
 
 .page-header p{
-    color:#687487;
     max-width:650px;
     margin:auto;
+    color:#687487;
 }
 
 .services-section{
@@ -135,56 +128,49 @@ header{
     display:flex;
     flex-wrap:wrap;
     gap:12px;
-    margin-bottom:30px;
+    margin-bottom:28px;
 }
 
-.search-box{
+.search{
     flex:1;
     min-width:220px;
 }
 
-.search-box input{
+.search input{
     width:100%;
     height:48px;
     border:1px solid #dce2eb;
     border-radius:10px;
-    padding:0 16px;
+    padding:0 15px;
     outline:none;
     background:#fff;
-    font-size:15px;
-}
-
-.search-box input:focus{
-    border-color:#1167d8;
 }
 
 .filters{
     display:flex;
-    flex-wrap:wrap;
     gap:8px;
+    flex-wrap:wrap;
 }
 
 .filter-btn{
     border:1px solid #dce2eb;
     background:#fff;
-    color:#596579;
-    padding:11px 15px;
+    padding:10px 14px;
     border-radius:9px;
     cursor:pointer;
-    font-size:14px;
+    color:#586476;
 }
 
-.filter-btn.active,
-.filter-btn:hover{
+.filter-btn.active{
     background:#1167d8;
     color:#fff;
     border-color:#1167d8;
 }
 
 .service-count{
-    color:#707b8c;
-    font-size:14px;
     margin-bottom:18px;
+    color:#727d8d;
+    font-size:14px;
 }
 
 .services-grid{
@@ -199,8 +185,6 @@ header{
     border-radius:16px;
     padding:22px;
     transition:.25s;
-    display:flex;
-    flex-direction:column;
 }
 
 .service-card:hover{
@@ -210,9 +194,8 @@ header{
 
 .service-top{
     display:flex;
-    align-items:flex-start;
     justify-content:space-between;
-    gap:12px;
+    align-items:flex-start;
 }
 
 .service-icon{
@@ -230,9 +213,8 @@ header{
     font-size:11px;
     color:#1167d8;
     background:#edf5ff;
-    padding:5px 8px;
+    padding:5px 9px;
     border-radius:20px;
-    white-space:nowrap;
 }
 
 .service-card h3{
@@ -247,7 +229,6 @@ header{
 }
 
 .service-bottom{
-    margin-top:auto;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -257,13 +238,13 @@ header{
 .price{
     font-size:17px;
     font-weight:800;
-    color:#172033;
 }
 
-.price span{
-    font-size:12px;
-    font-weight:500;
-    color:#7a8493;
+.price small{
+    display:block;
+    font-size:11px;
+    color:#7b8492;
+    font-weight:400;
 }
 
 .service-btn{
@@ -273,7 +254,6 @@ header{
     padding:10px 14px;
     border-radius:9px;
     cursor:pointer;
-    font-size:13px;
     font-weight:700;
 }
 
@@ -283,32 +263,32 @@ header{
 
 .no-result{
     display:none;
-    text-align:center;
     background:#fff;
-    border:1px solid #e5e9ef;
+    border:1px solid #e4e9f0;
+    padding:40px;
+    text-align:center;
     border-radius:15px;
-    padding:40px 20px;
-    color:#717c8d;
+    color:#727d8d;
 }
 
 .notice{
-    margin-top:35px;
+    margin-top:30px;
+    padding:17px;
     background:#fff8e6;
-    border:1px solid #f2dfad;
-    border-radius:14px;
-    padding:18px;
-    color:#6f5a20;
+    border:1px solid #f0dda8;
+    border-radius:13px;
+    color:#6e5b22;
     font-size:14px;
 }
 
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(10,20,35,.55);
+    background:rgba(10,20,35,.58);
     display:none;
     align-items:center;
     justify-content:center;
-    padding:20px;
+    padding:15px;
     z-index:2000;
 }
 
@@ -317,17 +297,16 @@ header{
 }
 
 .modal-box{
-    width:min(520px,100%);
-    max-height:90vh;
+    width:min(540px,100%);
+    max-height:92vh;
     overflow-y:auto;
     background:#fff;
     border-radius:20px;
     padding:25px;
     position:relative;
-    box-shadow:0 20px 60px rgba(0,0,0,.2);
 }
 
-.close-btn{
+.close{
     position:absolute;
     right:15px;
     top:15px;
@@ -336,60 +315,118 @@ header{
     border:0;
     border-radius:50%;
     background:#f1f3f7;
-    color:#555;
-    font-size:20px;
+    font-size:21px;
     cursor:pointer;
 }
 
 .modal-title{
-    padding-right:45px;
-    margin-bottom:5px;
     font-size:23px;
+    padding-right:40px;
+    margin-bottom:5px;
 }
 
-.modal-subtitle{
-    color:#727d8d;
+.modal-text{
+    color:#737e8d;
     font-size:14px;
-    margin-bottom:22px;
-}
-
-.selected-service{
-    background:#edf5ff;
-    border-radius:12px;
-    padding:14px;
     margin-bottom:20px;
 }
 
-.selected-service strong{
-    display:block;
-    color:#1167d8;
+.subservices{
+    display:grid;
+    gap:10px;
 }
 
-.selected-service span{
-    font-size:14px;
-    color:#566275;
+.subservice{
+    width:100%;
+    padding:15px;
+    border:1px solid #dfe5ee;
+    background:#fff;
+    border-radius:11px;
+    text-align:left;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.subservice:hover{
+    border-color:#1167d8;
+    background:#f6faff;
+}
+
+.subservice-info strong{
+    display:block;
+    font-size:15px;
+}
+
+.subservice-info span{
+    color:#7a8492;
+    font-size:12px;
+}
+
+.subservice-price{
+    white-space:nowrap;
+    color:#1167d8;
+    font-weight:800;
+}
+
+.form-section{
+    display:none;
+}
+
+.form-section.show{
+    display:block;
+}
+
+.back-btn{
+    border:0;
+    background:#edf5ff;
+    color:#1167d8;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+
+.selected-box{
+    background:#edf5ff;
+    padding:14px;
+    border-radius:11px;
+    margin-bottom:20px;
+}
+
+.selected-box strong{
+    color:#1167d8;
+    display:block;
+}
+
+.selected-box span{
+    color:#596678;
+    font-size:13px;
 }
 
 .form-group{
-    margin-bottom:16px;
+    margin-bottom:15px;
 }
 
 .form-group label{
     display:block;
-    margin-bottom:7px;
     font-size:14px;
     font-weight:700;
+    margin-bottom:6px;
 }
 
 .form-group input,
-.form-group textarea{
+.form-group textarea,
+.form-group select{
     width:100%;
     border:1px solid #dce2eb;
-    border-radius:10px;
-    padding:12px 13px;
+    border-radius:9px;
+    padding:12px;
     outline:none;
-    font-size:14px;
     background:#fff;
+    font-size:14px;
 }
 
 .form-group input{
@@ -397,13 +434,22 @@ header{
 }
 
 .form-group textarea{
-    min-height:90px;
+    min-height:85px;
     resize:vertical;
 }
 
 .form-group input:focus,
-.form-group textarea:focus{
+.form-group textarea:focus,
+.form-group select:focus{
     border-color:#1167d8;
+}
+
+.dynamic-fields{
+    display:none;
+}
+
+.dynamic-fields.show{
+    display:block;
 }
 
 .submit-btn{
@@ -413,9 +459,10 @@ header{
     border-radius:10px;
     background:#1167d8;
     color:#fff;
-    font-size:15px;
     font-weight:800;
+    font-size:15px;
     cursor:pointer;
+    margin-top:5px;
 }
 
 .submit-btn:hover{
@@ -431,7 +478,7 @@ footer{
 .footer-content{
     display:grid;
     grid-template-columns:1.5fr 1fr 1fr;
-    gap:35px;
+    gap:30px;
     padding-bottom:30px;
 }
 
@@ -446,8 +493,8 @@ footer{
 }
 
 .footer-title{
-    font-size:16px;
     margin-bottom:12px;
+    font-size:16px;
 }
 
 .footer-links{
@@ -456,15 +503,12 @@ footer{
 
 .footer-links li{
     margin-bottom:8px;
-}
-
-.footer-links a{
     color:#aeb8c8;
     font-size:14px;
 }
 
-.footer-links a:hover{
-    color:#fff;
+.footer-links a{
+    color:#aeb8c8;
 }
 
 .copyright{
@@ -488,10 +532,6 @@ footer{
 
 @media(max-width:650px){
 
-    .navbar{
-        min-height:64px;
-    }
-
     .menu-btn{
         display:block;
     }
@@ -502,11 +542,10 @@ footer{
         left:0;
         right:0;
         background:#fff;
-        border-top:1px solid #e8ebf2;
         display:none;
         flex-direction:column;
-        align-items:stretch;
         padding:10px;
+        border-top:1px solid #eee;
         box-shadow:0 10px 25px rgba(0,0,0,.08);
     }
 
@@ -515,7 +554,7 @@ footer{
     }
 
     .nav-links a{
-        padding:12px 14px;
+        padding:12px;
     }
 
     .page-header{
@@ -553,13 +592,8 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .modal{
-        padding:12px;
-    }
-
     .modal-box{
         padding:20px;
-        border-radius:16px;
     }
 }
 </style>
@@ -591,551 +625,850 @@ footer{
     <div class="container">
         <h1>আমাদের সকল সেবা</h1>
         <p>
-            প্রয়োজনীয় সেবা নির্বাচন করুন, চার্জ দেখুন এবং আপনার তথ্য দিয়ে
-            সেবা নেওয়ার অনুরোধ জমা দিন।
+            আপনার প্রয়োজনীয় সেবা নির্বাচন করুন এবং প্রয়োজনীয় তথ্য দিয়ে
+            অনুরোধ জমা দিন।
         </p>
     </div>
 </section>
 
 <section class="services-section">
 
-    <div class="container">
-
-        <div class="toolbar">
-
-            <div class="search-box">
-                <input
-                    type="search"
-                    id="searchInput"
-                    placeholder="সেবা খুঁজুন..."
-                >
-            </div>
-
-            <div class="filters">
-
-                <button class="filter-btn active" data-category="all">
-                    সব সেবা
-                </button>
-
-                <button class="filter-btn" data-category="document">
-                    ডকুমেন্ট
-                </button>
-
-                <button class="filter-btn" data-category="travel">
-                    ভ্রমণ
-                </button>
-
-                <button class="filter-btn" data-category="job">
-                    চাকরি
-                </button>
-
-                <button class="filter-btn" data-category="online">
-                    অনলাইন
-                </button>
-
-                <button class="filter-btn" data-category="other">
-                    অন্যান্য
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="service-count" id="serviceCount">
-            মোট ১৬টি সেবা
-        </div>
-
-        <div class="services-grid" id="servicesGrid">
-
-            <div class="service-card" data-category="document" data-name="NID জাতীয় পরিচয়পত্র">
-
-                <div class="service-top">
-                    <div class="service-icon">🪪</div>
-                    <span class="category">ডকুমেন্ট</span>
-                </div>
-
-                <h3>NID / জাতীয় পরিচয়পত্র</h3>
-
-                <p>
-                    NID সম্পর্কিত অনলাইন তথ্য ও প্রক্রিয়ায় সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="NID / জাতীয় পরিচয়পত্র" data-price="১০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="document" data-name="জন্মনিবন্ধন">
-
-                <div class="service-top">
-                    <div class="service-icon">📄</div>
-                    <span class="category">ডকুমেন্ট</span>
-                </div>
-
-                <h3>জন্মনিবন্ধন</h3>
-
-                <p>
-                    জন্মনিবন্ধন সংক্রান্ত অনলাইন প্রক্রিয়ায় সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="জন্মনিবন্ধন" data-price="১০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="online" data-name="মোবাইল তথ্য সহায়তা">
-
-                <div class="service-top">
-                    <div class="service-icon">📱</div>
-                    <span class="category">অনলাইন</span>
-                </div>
-
-                <h3>মোবাইল তথ্য সহায়তা</h3>
-
-                <p>
-                    নিজের সংযোগের বৈধ তথ্য যাচাইয়ে সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="মোবাইল তথ্য সহায়তা" data-price="৫০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="travel" data-name="ট্যুর প্ল্যান">
-
-                <div class="service-top">
-                    <div class="service-icon">🗺️</div>
-                    <span class="category">ভ্রমণ</span>
-                </div>
-
-                <h3>ট্যুর প্ল্যান</h3>
-
-                <p>
-                    বাজেট ও সময় অনুযায়ী ভ্রমণ পরিকল্পনায় সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ৩০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="ট্যুর প্ল্যান" data-price="৩০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="travel" data-name="হোটেল বুকিং">
-
-                <div class="service-top">
-                    <div class="service-icon">🏨</div>
-                    <span class="category">ভ্রমণ</span>
-                </div>
-
-                <h3>হোটেল বুকিং</h3>
-
-                <p>
-                    প্রয়োজন অনুযায়ী হোটেল খোঁজা ও বুকিং সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ২০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="হোটেল বুকিং" data-price="২০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="job" data-name="চাকরি খোঁজা">
-
-                <div class="service-top">
-                    <div class="service-icon">💼</div>
-                    <span class="category">চাকরি</span>
-                </div>
-
-                <h3>চাকরি খোঁজা</h3>
-
-                <p>
-                    উপযুক্ত চাকরি খোঁজা ও আবেদন প্রক্রিয়ায় সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ২০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="চাকরি খোঁজা" data-price="২০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="travel" data-name="ট্রেন টিকেট">
-
-                <div class="service-top">
-                    <div class="service-icon">🚆</div>
-                    <span class="category">ভ্রমণ</span>
-                </div>
-
-                <h3>ট্রেন টিকেট</h3>
-
-                <p>
-                    ট্রেনের সময়সূচি ও টিকেট সংক্রান্ত সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="ট্রেন টিকেট" data-price="১০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="travel" data-name="বিমান টিকেট">
-
-                <div class="service-top">
-                    <div class="service-icon">✈️</div>
-                    <span class="category">ভ্রমণ</span>
-                </div>
-
-                <h3>বিমান টিকেট</h3>
-
-                <p>
-                    ফ্লাইট খোঁজা, সময়সূচি ও টিকেট সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ৩০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="বিমান টিকেট" data-price="৩০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="document" data-name="পাসপোর্ট সেবা">
-
-                <div class="service-top">
-                    <div class="service-icon">📘</div>
-                    <span class="category">ডকুমেন্ট</span>
-                </div>
-
-                <h3>পাসপোর্ট সেবা</h3>
-
-                <p>
-                    পাসপোর্ট আবেদন ও অনলাইন প্রক্রিয়ায় সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ২০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="পাসপোর্ট সেবা" data-price="২০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="document" data-name="ভিসা তথ্য">
-
-                <div class="service-top">
-                    <div class="service-icon">🌍</div>
-                    <span class="category">ডকুমেন্ট</span>
-                </div>
-
-                <h3>ভিসা তথ্য</h3>
-
-                <p>
-                    ভিসা সংক্রান্ত প্রয়োজনীয় তথ্য ও প্রক্রিয়ায় সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ২০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="ভিসা তথ্য" data-price="২০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="online" data-name="অনলাইন ফর্ম">
-
-                <div class="service-top">
-                    <div class="service-icon">📝</div>
-                    <span class="category">অনলাইন</span>
-                </div>
-
-                <h3>অনলাইন ফর্ম</h3>
-
-                <p>
-                    বিভিন্ন অনলাইন ফর্ম পূরণ ও সাবমিশনে সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="অনলাইন ফর্ম" data-price="১০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="online" data-name="PDF ডকুমেন্ট">
-
-                <div class="service-top">
-                    <div class="service-icon">📑</div>
-                    <span class="category">অনলাইন</span>
-                </div>
-
-                <h3>PDF ও ডকুমেন্ট</h3>
-
-                <p>
-                    PDF তৈরি, কনভার্ট ও প্রয়োজনীয় ডকুমেন্ট সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="PDF ও ডকুমেন্ট" data-price="৫০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="online" data-name="শিক্ষা সেবা">
-
-                <div class="service-top">
-                    <div class="service-icon">🎓</div>
-                    <span class="category">অনলাইন</span>
-                </div>
-
-                <h3>শিক্ষা সেবা</h3>
-
-                <p>
-                    অনলাইন শিক্ষা সংক্রান্ত ফর্ম ও তথ্য সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="শিক্ষা সেবা" data-price="১০০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="other" data-name="হাসপাতাল তথ্য">
-
-                <div class="service-top">
-                    <div class="service-icon">🏥</div>
-                    <span class="category">অন্যান্য</span>
-                </div>
-
-                <h3>হাসপাতাল তথ্য</h3>
-
-                <p>
-                    হাসপাতাল, ডাক্তার ও প্রয়োজনীয় তথ্য খুঁজতে সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="হাসপাতাল তথ্য" data-price="৫০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="online" data-name="অনলাইন তথ্য খোঁজা">
-
-                <div class="service-top">
-                    <div class="service-icon">🔎</div>
-                    <span class="category">অনলাইন</span>
-                </div>
-
-                <h3>অনলাইন তথ্য খোঁজা</h3>
-
-                <p>
-                    প্রয়োজনীয় অনলাইন তথ্য খুঁজে পেতে সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="অনলাইন তথ্য খোঁজা" data-price="৫০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="service-card" data-category="other" data-name="ডিজিটাল পেমেন্ট">
-
-                <div class="service-top">
-                    <div class="service-icon">💳</div>
-                    <span class="category">অন্যান্য</span>
-                </div>
-
-                <h3>ডিজিটাল পেমেন্ট</h3>
-
-                <p>
-                    বৈধ অনলাইন পেমেন্ট ও ডিজিটাল লেনদেনে সহায়তা।
-                </p>
-
-                <div class="service-bottom">
-                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
-                    <button class="service-btn" data-service="ডিজিটাল পেমেন্ট" data-price="৫০">
-                        সেবা নিন
-                    </button>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="no-result" id="noResult">
-            কোনো সেবা পাওয়া যায়নি।
-        </div>
-
-        <div class="notice">
-            <strong>গুরুত্বপূর্ণ:</strong>
-            সরকারি বা ব্যক্তিগত তথ্যের ক্ষেত্রে শুধুমাত্র বৈধ ও অনুমোদিত
-            প্রক্রিয়ায় সহায়তা প্রদান করা হবে। প্রয়োজনীয় তথ্য ছাড়া কোনো
-            অননুমোদিত তথ্য সংগ্রহ বা ব্যবহার করা হবে না।
-        </div>
-
+<div class="container">
+
+<div class="toolbar">
+
+    <div class="search">
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="সেবা খুঁজুন..."
+        >
     </div>
 
-</section>
+    <div class="filters">
 
-<div class="modal" id="serviceModal">
+        <button class="filter-btn active" data-category="all">
+            সব
+        </button>
 
-    <div class="modal-box">
+        <button class="filter-btn" data-category="document">
+            ডকুমেন্ট
+        </button>
 
-        <button class="close-btn" id="closeModal">×</button>
+        <button class="filter-btn" data-category="travel">
+            ভ্রমণ
+        </button>
 
-        <h2 class="modal-title">সেবা নেওয়ার ফর্ম</h2>
+        <button class="filter-btn" data-category="job">
+            চাকরি
+        </button>
 
-        <p class="modal-subtitle">
-            নিচের তথ্যগুলো সঠিকভাবে পূরণ করে সেবা জমা দিন।
-        </p>
-
-        <div class="selected-service">
-
-            <strong id="selectedService">
-                সেবা
-            </strong>
-
-            <span>
-                সেবা চার্জ: ৳ <span id="selectedPrice">0</span>
-            </span>
-
-        </div>
-
-        <form id="serviceForm">
-
-            <div class="form-group">
-                <label for="name">আপনার নাম</label>
-
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="আপনার পূর্ণ নাম লিখুন"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="whatsapp">WhatsApp নম্বর</label>
-
-                <input
-                    type="tel"
-                    id="whatsapp"
-                    placeholder="01XXXXXXXXX"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="address">ঠিকানা</label>
-
-                <textarea
-                    id="address"
-                    placeholder="আপনার বর্তমান ঠিকানা লিখুন"
-                    required
-                ></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">
-                সেবা জমা দিন
-            </button>
-
-        </form>
+        <button class="filter-btn" data-category="online">
+            অনলাইন
+        </button>
 
     </div>
 
 </div>
 
+<div class="service-count" id="serviceCount">
+    মোট ১৬টি সেবা
+</div>
+
+<div class="services-grid" id="servicesGrid">
+
+<div class="service-card" data-category="document" data-name="nid জাতীয় পরিচয়পত্র">
+
+    <div class="service-top">
+        <div class="service-icon">🪪</div>
+        <span class="category">ডকুমেন্ট</span>
+    </div>
+
+    <h3>NID / জাতীয় পরিচয়পত্র</h3>
+
+    <p>
+        NID সম্পর্কিত বিভিন্ন অনলাইন সেবায় সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ১০০+
+            <small>সেবা অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="NID / জাতীয় পরিচয়পত্র"
+            data-type="nid"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="document" data-name="জন্মনিবন্ধন">
+
+    <div class="service-top">
+        <div class="service-icon">📄</div>
+        <span class="category">ডকুমেন্ট</span>
+    </div>
+
+    <h3>জন্মনিবন্ধন</h3>
+
+    <p>
+        জন্মনিবন্ধন সংক্রান্ত অনলাইন প্রক্রিয়ায় সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ১০০+
+            <small>সেবা অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="জন্মনিবন্ধন"
+            data-type="birth"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="online" data-name="মোবাইল তথ্য সহায়তা">
+
+    <div class="service-top">
+        <div class="service-icon">📱</div>
+        <span class="category">অনলাইন</span>
+    </div>
+
+    <h3>মোবাইল তথ্য সহায়তা</h3>
+
+    <p>
+        নিজের সংযোগের বৈধ তথ্য যাচাইয়ে সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ৫০+
+            <small>সেবা অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="মোবাইল তথ্য সহায়তা"
+            data-type="mobile"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="travel" data-name="ট্যুর প্ল্যান">
+
+    <div class="service-top">
+        <div class="service-icon">🗺️</div>
+        <span class="category">ভ্রমণ</span>
+    </div>
+
+    <h3>ট্যুর প্ল্যান</h3>
+
+    <p>
+        বাজেট ও সময় অনুযায়ী ভ্রমণ পরিকল্পনা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ৩০০+
+            <small>প্যাকেজ অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="ট্যুর প্ল্যান"
+            data-type="tour"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="travel" data-name="হোটেল বুকিং">
+
+    <div class="service-top">
+        <div class="service-icon">🏨</div>
+        <span class="category">ভ্রমণ</span>
+    </div>
+
+    <h3>হোটেল বুকিং</h3>
+
+    <p>
+        প্রয়োজন অনুযায়ী হোটেল খোঁজা ও বুকিং সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ২০০+
+            <small>বুকিং অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="হোটেল বুকিং"
+            data-type="hotel"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="job" data-name="চাকরি খোঁজা">
+
+    <div class="service-top">
+        <div class="service-icon">💼</div>
+        <span class="category">চাকরি</span>
+    </div>
+
+    <h3>চাকরি খোঁজা</h3>
+
+    <p>
+        চাকরি খোঁজা ও আবেদন প্রক্রিয়ায় সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ২০০+
+            <small>সেবা অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="চাকরি খোঁজা"
+            data-type="job"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="travel" data-name="ট্রেন টিকেট">
+
+    <div class="service-top">
+        <div class="service-icon">🚆</div>
+        <span class="category">ভ্রমণ</span>
+    </div>
+
+    <h3>ট্রেন টিকেট</h3>
+
+    <p>
+        ট্রেনের সময়সূচি ও টিকেট সংক্রান্ত সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ১০০+
+            <small>সেবা অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="ট্রেন টিকেট"
+            data-type="train"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="travel" data-name="বিমান টিকেট">
+
+    <div class="service-top">
+        <div class="service-icon">✈️</div>
+        <span class="category">ভ্রমণ</span>
+    </div>
+
+    <h3>বিমান টিকেট</h3>
+
+    <p>
+        ফ্লাইট খোঁজা ও টিকেট সংক্রান্ত সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ৩০০+
+            <small>সেবা অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="বিমান টিকেট"
+            data-type="flight"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="document" data-name="পাসপোর্ট">
+
+    <div class="service-top">
+        <div class="service-icon">📘</div>
+        <span class="category">ডকুমেন্ট</span>
+    </div>
+
+    <h3>পাসপোর্ট সেবা</h3>
+
+    <p>
+        পাসপোর্ট আবেদন ও তথ্য সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ২০০+
+            <small>সেবা অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="পাসপোর্ট সেবা"
+            data-type="passport"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="document" data-name="ভিসা তথ্য">
+
+    <div class="service-top">
+        <div class="service-icon">🌍</div>
+        <span class="category">ডকুমেন্ট</span>
+    </div>
+
+    <h3>ভিসা তথ্য</h3>
+
+    <p>
+        ভিসা সংক্রান্ত তথ্য ও প্রক্রিয়ায় সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ২০০+
+            <small>সেবা অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="ভিসা তথ্য"
+            data-type="visa"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="online" data-name="অনলাইন ফর্ম">
+
+    <div class="service-top">
+        <div class="service-icon">📝</div>
+        <span class="category">অনলাইন</span>
+    </div>
+
+    <h3>অনলাইন ফর্ম</h3>
+
+    <p>
+        বিভিন্ন অনলাইন ফর্ম পূরণে সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ১০০+
+            <small>ফর্ম অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="অনলাইন ফর্ম"
+            data-type="form"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="online" data-name="pdf ডকুমেন্ট">
+
+    <div class="service-top">
+        <div class="service-icon">📑</div>
+        <span class="category">অনলাইন</span>
+    </div>
+
+    <h3>PDF ও ডকুমেন্ট</h3>
+
+    <p>
+        PDF তৈরি, কনভার্ট ও ডকুমেন্ট সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ৫০+
+            <small>কাজ অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="PDF ও ডকুমেন্ট"
+            data-type="pdf"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="online" data-name="শিক্ষা সেবা">
+
+    <div class="service-top">
+        <div class="service-icon">🎓</div>
+        <span class="category">অনলাইন</span>
+    </div>
+
+    <h3>শিক্ষা সেবা</h3>
+
+    <p>
+        শিক্ষা সংক্রান্ত অনলাইন তথ্য ও ফর্ম সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ১০০+
+            <small>সেবা অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="শিক্ষা সেবা"
+            data-type="education"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="online" data-name="অনলাইন তথ্য">
+
+    <div class="service-top">
+        <div class="service-icon">🔎</div>
+        <span class="category">অনলাইন</span>
+    </div>
+
+    <h3>অনলাইন তথ্য খোঁজা</h3>
+
+    <p>
+        প্রয়োজনীয় অনলাইন তথ্য খুঁজে পেতে সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ৫০+
+            <small>কাজ অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="অনলাইন তথ্য খোঁজা"
+            data-type="search"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+<div class="service-card" data-category="other" data-name="ডিজিটাল পেমেন্ট">
+
+    <div class="service-top">
+        <div class="service-icon">💳</div>
+        <span class="category">অন্যান্য</span>
+    </div>
+
+    <h3>ডিজিটাল পেমেন্ট</h3>
+
+    <p>
+        বৈধ ডিজিটাল পেমেন্ট প্রক্রিয়ায় সহায়তা।
+    </p>
+
+    <div class="service-bottom">
+        <div class="price">
+            ৳ ৫০+
+            <small>কাজ অনুযায়ী</small>
+        </div>
+
+        <button
+            class="service-btn"
+            data-service="ডিজিটাল পেমেন্ট"
+            data-type="payment"
+        >
+            সেবা নিন
+        </button>
+    </div>
+
+</div>
+
+</div>
+
+<div class="no-result" id="noResult">
+    কোনো সেবা পাওয়া যায়নি।
+</div>
+
+<div class="notice">
+    <strong>গুরুত্বপূর্ণ:</strong>
+    সরকারি বা ব্যক্তিগত তথ্যের ক্ষেত্রে শুধুমাত্র বৈধ ও অনুমোদিত
+    প্রক্রিয়ায় সহায়তা প্রদান করা হবে। OTP, PIN, পাসওয়ার্ড বা অন্যের
+    গোপন লগইন তথ্য এখানে জমা দেবেন না।
+</div>
+
+</div>
+
+</section>
+
+<div class="modal" id="serviceModal">
+
+<div class="modal-box">
+
+<button class="close" id="closeModal">×</button>
+
+<div id="categorySection">
+
+    <h2 class="modal-title" id="categoryTitle">
+        সেবার ধরন নির্বাচন করুন
+    </h2>
+
+    <p class="modal-text">
+        আপনার প্রয়োজনীয় কাজটি নির্বাচন করুন।
+    </p>
+
+    <div class="subservices" id="subservices"></div>
+
+</div>
+
+<div class="form-section" id="formSection">
+
+    <button class="back-btn" id="backBtn">
+        ← পিছনে
+    </button>
+
+    <h2 class="modal-title">
+        সেবা জমা দিন
+    </h2>
+
+    <p class="modal-text">
+        প্রয়োজনীয় তথ্য পূরণ করুন।
+    </p>
+
+    <div class="selected-box">
+        <strong id="selectedService"></strong>
+        <span id="selectedSubService"></span>
+    </div>
+
+    <form id="serviceForm">
+
+        <div class="form-group">
+            <label>আপনার নাম</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="পূর্ণ নাম"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label>WhatsApp নম্বর</label>
+            <input
+                type="tel"
+                id="whatsapp"
+                placeholder="01XXXXXXXXX"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label>ঠিকানা</label>
+            <textarea
+                id="address"
+                placeholder="আপনার ঠিকানা"
+                required
+            ></textarea>
+        </div>
+
+        <div class="dynamic-fields" id="nidFields">
+
+            <div class="form-group">
+                <label>NID নম্বর</label>
+                <input
+                    type="text"
+                    id="nidNumber"
+                    placeholder="প্রয়োজনে NID নম্বর দিন"
+                >
+            </div>
+
+        </div>
+
+        <div class="dynamic-fields" id="birthFields">
+
+            <div class="form-group">
+                <label>জন্মতারিখ</label>
+                <input
+                    type="date"
+                    id="birthDate"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>জন্মনিবন্ধন নম্বর</label>
+                <input
+                    type="text"
+                    id="birthNumber"
+                    placeholder="প্রযোজ্য হলে"
+                >
+            </div>
+
+        </div>
+
+        <div class="dynamic-fields" id="travelFields">
+
+            <div class="form-group">
+                <label>গন্তব্য</label>
+                <input
+                    type="text"
+                    id="destination"
+                    placeholder="যেমন: কক্সবাজার"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>ভ্রমণের তারিখ</label>
+                <input
+                    type="date"
+                    id="travelDate"
+                >
+            </div>
+
+        </div>
+
+        <div class="dynamic-fields" id="jobFields">
+
+            <div class="form-group">
+                <label>কাজের ধরন</label>
+                <input
+                    type="text"
+                    id="jobType"
+                    placeholder="যেমন: Hotel, Driver, Office"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>পছন্দের দেশ</label>
+                <input
+                    type="text"
+                    id="jobCountry"
+                    placeholder="যেমন: বাংলাদেশ, সৌদি আরব"
+                >
+            </div>
+
+        </div>
+
+        <div class="dynamic-fields" id="hotelFields">
+
+            <div class="form-group">
+                <label>হোটেল/শহর</label>
+                <input
+                    type="text"
+                    id="hotelLocation"
+                    placeholder="হোটেল বা শহরের নাম"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>চেক-ইন তারিখ</label>
+                <input
+                    type="date"
+                    id="checkIn"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>চেক-আউট তারিখ</label>
+                <input
+                    type="date"
+                    id="checkOut"
+                >
+            </div>
+
+        </div>
+
+        <div class="dynamic-fields" id="ticketFields">
+
+            <div class="form-group">
+                <label>যাত্রার স্থান</label>
+                <input
+                    type="text"
+                    id="fromPlace"
+                    placeholder="কোথা থেকে"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>গন্তব্য</label>
+                <input
+                    type="text"
+                    id="toPlace"
+                    placeholder="কোথায় যাবেন"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>যাত্রার তারিখ</label>
+                <input
+                    type="date"
+                    id="ticketDate"
+                >
+            </div>
+
+        </div>
+
+        <div class="dynamic-fields" id="passportFields">
+
+            <div class="form-group">
+                <label>পাসপোর্টের ধরন</label>
+
+                <select id="passportType">
+                    <option value="">নির্বাচন করুন</option>
+                    <option>নতুন পাসপোর্ট</option>
+                    <option>পাসপোর্ট নবায়ন</option>
+                    <option>পাসপোর্ট তথ্য সংশোধন</option>
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="dynamic-fields" id="visaFields">
+
+            <div class="form-group">
+                <label>কোন দেশের ভিসা?</label>
+
+                <input
+                    type="text"
+                    id="visaCountry"
+                    placeholder="দেশের নাম"
+                >
+
+            </div>
+
+            <div class="form-group">
+                <label>ভিসার ধরন</label>
+
+                <select id="visaType">
+                    <option value="">নির্বাচন করুন</option>
+                    <option>Tourist</option>
+                    <option>Work</option>
+                    <option>Student</option>
+                    <option>Business</option>
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>অতিরিক্ত তথ্য</label>
+
+            <textarea
+                id="details"
+                placeholder="আপনার কাজ সম্পর্কে অতিরিক্ত কিছু থাকলে লিখুন"
+            ></textarea>
+
+        </div>
+
+        <button type="submit" class="submit-btn">
+            সেবা জমা দিন
+        </button>
+
+    </form>
+
+</div>
+
+</div>
+
+</div>
+
 <footer>
 
-    <div class="container">
+<div class="container">
 
-        <div class="footer-content">
+<div class="footer-content">
 
-            <div>
+<div>
 
-                <a href="index.html" class="logo footer-logo">
-                    <span class="logo-icon">DS</span>
-                    <span>ডিজিটাল সেবা</span>
-                </a>
+<a href="index.html" class="logo footer-logo">
+    <span class="logo-icon">DS</span>
+    <span>ডিজিটাল সেবা</span>
+</a>
 
-                <p>
-                    বিভিন্ন অনলাইন সেবা ও তথ্য প্রক্রিয়ায়
-                    সহজ এবং দায়িত্বশীল সহায়তা।
-                </p>
+<p>
+    বিভিন্ন অনলাইন সেবা ও তথ্য প্রক্রিয়ায়
+    সহজ ও দায়িত্বশীল সহায়তা।
+</p>
 
-            </div>
+</div>
 
-            <div>
+<div>
 
-                <h3 class="footer-title">দ্রুত লিংক</h3>
+<h3 class="footer-title">দ্রুত লিংক</h3>
 
-                <ul class="footer-links">
-                    <li><a href="index.html">হোম</a></li>
-                    <li><a href="services.html">সেবাসমূহ</a></li>
-                    <li><a href="index.html#process">কিভাবে কাজ করে</a></li>
-                    <li><a href="index.html#contact">যোগাযোগ</a></li>
-                </ul>
+<ul class="footer-links">
+    <li><a href="index.html">হোম</a></li>
+    <li><a href="services.html">সেবাসমূহ</a></li>
+    <li><a href="index.html#process">কিভাবে কাজ করে</a></li>
+    <li><a href="index.html#contact">যোগাযোগ</a></li>
+</ul>
 
-            </div>
+</div>
 
-            <div>
+<div>
 
-                <h3 class="footer-title">যোগাযোগ</h3>
+<h3 class="footer-title">যোগাযোগ</h3>
 
-                <ul class="footer-links">
-                    <li>📱 01XXXXXXXXX</li>
-                    <li>💬 WhatsApp</li>
-                    <li>📍 বাংলাদেশ</li>
-                </ul>
+<ul class="footer-links">
+    <li>📱 01XXXXXXXXX</li>
+    <li>💬 WhatsApp</li>
+    <li>📍 বাংলাদেশ</li>
+</ul>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <div class="copyright">
-            © 2026 ডিজিটাল সেবা — সর্বস্বত্ব সংরক্ষিত।
-        </div>
+<div class="copyright">
+    © 2026 ডিজিটাল সেবা — সর্বস্বত্ব সংরক্ষিত।
+</div>
 
-    </div>
+</div>
 
 </footer>
 
@@ -1144,19 +1477,19 @@ footer{
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
-menuBtn.addEventListener("click", () => {
+menuBtn.addEventListener("click",()=>{
     navLinks.classList.toggle("show");
 });
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
+document.querySelectorAll(".nav-links a").forEach(link=>{
+    link.addEventListener("click",()=>{
         navLinks.classList.remove("show");
     });
 });
 
 const searchInput = document.getElementById("searchInput");
 const filterButtons = document.querySelectorAll(".filter-btn");
-const serviceCards = document.querySelectorAll(".service-card");
+const cards = document.querySelectorAll(".service-card");
 const serviceCount = document.getElementById("serviceCount");
 const noResult = document.getElementById("noResult");
 
@@ -1164,11 +1497,11 @@ let selectedCategory = "all";
 
 function filterServices(){
 
-    const searchText = searchInput.value.toLowerCase().trim();
+    const search = searchInput.value.toLowerCase().trim();
 
-    let visibleCount = 0;
+    let count = 0;
 
-    serviceCards.forEach(card => {
+    cards.forEach(card=>{
 
         const category = card.dataset.category;
         const name = card.dataset.name.toLowerCase();
@@ -1178,12 +1511,12 @@ function filterServices(){
             category === selectedCategory;
 
         const searchMatch =
-            name.includes(searchText);
+            name.includes(search);
 
         if(categoryMatch && searchMatch){
 
-            card.style.display = "flex";
-            visibleCount++;
+            card.style.display = "block";
+            count++;
 
         }else{
 
@@ -1194,25 +1527,26 @@ function filterServices(){
     });
 
     serviceCount.textContent =
-        "দেখানো হচ্ছে " + visibleCount + "টি সেবা";
+        "দেখানো হচ্ছে " + count + "টি সেবা";
 
     noResult.style.display =
-        visibleCount === 0 ? "block" : "none";
+        count === 0 ? "block" : "none";
 }
 
-searchInput.addEventListener("input", filterServices);
+searchInput.addEventListener("input",filterServices);
 
-filterButtons.forEach(button => {
+filterButtons.forEach(button=>{
 
-    button.addEventListener("click", () => {
+    button.addEventListener("click",()=>{
 
-        filterButtons.forEach(btn => {
+        filterButtons.forEach(btn=>{
             btn.classList.remove("active");
         });
 
         button.classList.add("active");
 
-        selectedCategory = button.dataset.category;
+        selectedCategory =
+            button.dataset.category;
 
         filterServices();
 
@@ -1220,24 +1554,382 @@ filterButtons.forEach(button => {
 
 });
 
-const modal = document.getElementById("serviceModal");
-const closeModal = document.getElementById("closeModal");
-const selectedService = document.getElementById("selectedService");
-const selectedPrice = document.getElementById("selectedPrice");
-const serviceForm = document.getElementById("serviceForm");
+const modal =
+    document.getElementById("serviceModal");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+const categorySection =
+    document.getElementById("categorySection");
+
+const formSection =
+    document.getElementById("formSection");
+
+const subservices =
+    document.getElementById("subservices");
+
+const categoryTitle =
+    document.getElementById("categoryTitle");
+
+const selectedService =
+    document.getElementById("selectedService");
+
+const selectedSubService =
+    document.getElementById("selectedSubService");
+
+const backBtn =
+    document.getElementById("backBtn");
 
 let currentService = "";
-let currentPrice = "";
+let currentType = "";
+let currentSubService = "";
 
-document.querySelectorAll(".service-btn").forEach(button => {
+const serviceCategories = {
 
-    button.addEventListener("click", () => {
+    nid: [
+
+        {
+            name:"NID অ্যাকাউন্ট সেটআপ",
+            price:"১০০",
+            description:"বৈধভাবে নিজের NID অনলাইন অ্যাকাউন্ট ব্যবহারে সহায়তা"
+        },
+
+        {
+            name:"NID ডাউনলোড",
+            price:"১০০",
+            description:"নিজের NID কপি ডাউনলোডে সহায়তা"
+        },
+
+        {
+            name:"NID তথ্য সংশোধন",
+            price:"২০০",
+            description:"তথ্য সংশোধনের আবেদন প্রক্রিয়ায় সহায়তা"
+        },
+
+        {
+            name:"NID স্ট্যাটাস চেক",
+            price:"৫০",
+            description:"নিজের আবেদনের স্ট্যাটাস যাচাইয়ে সহায়তা"
+        }
+
+    ],
+
+    birth: [
+
+        {
+            name:"নতুন জন্মনিবন্ধন",
+            price:"১০০",
+            description:"নতুন আবেদন প্রক্রিয়ায় সহায়তা"
+        },
+
+        {
+            name:"জন্মনিবন্ধন ডাউনলোড",
+            price:"৫০",
+            description:"সনদ ডাউনলোডে সহায়তা"
+        },
+
+        {
+            name:"জন্মনিবন্ধন সংশোধন",
+            price:"২০০",
+            description:"সংশোধন আবেদন প্রক্রিয়ায় সহায়তা"
+        },
+
+        {
+            name:"আবেদনের স্ট্যাটাস",
+            price:"৫০",
+            description:"আবেদনের বর্তমান অবস্থা যাচাই"
+        }
+
+    ],
+
+    mobile: [
+
+        {
+            name:"নিজের SIM তথ্য যাচাই",
+            price:"৫০",
+            description:"নিজের সংযোগের বৈধ তথ্য যাচাই"
+        },
+
+        {
+            name:"SIM সংক্রান্ত তথ্য",
+            price:"৫০",
+            description:"নিজের SIM সংক্রান্ত তথ্য সহায়তা"
+        }
+
+    ],
+
+    tour: [
+
+        {
+            name:"দেশের ভিতরে ট্যুর",
+            price:"৩০০",
+            description:"বাংলাদেশের ভ্রমণ পরিকল্পনা"
+        },
+
+        {
+            name:"বিদেশ ভ্রমণ",
+            price:"৫০০",
+            description:"বিদেশ ভ্রমণের পরিকল্পনা"
+        },
+
+        {
+            name:"ফ্যামিলি ট্যুর",
+            price:"৩০০",
+            description:"পরিবারের জন্য ভ্রমণ পরিকল্পনা"
+        }
+
+    ],
+
+    hotel: [
+
+        {
+            name:"দেশের হোটেল",
+            price:"২০০",
+            description:"দেশের বিভিন্ন হোটেল খোঁজা ও বুকিং সহায়তা"
+        },
+
+        {
+            name:"বিদেশের হোটেল",
+            price:"৩০০",
+            description:"বিদেশের হোটেল খোঁজা ও বুকিং সহায়তা"
+        }
+
+    ],
+
+    job: [
+
+        {
+            name:"বাংলাদেশের চাকরি",
+            price:"২০০",
+            description:"দেশের চাকরি খোঁজা ও আবেদন সহায়তা"
+        },
+
+        {
+            name:"বিদেশের চাকরি",
+            price:"৩০০",
+            description:"বিদেশি চাকরি খোঁজা ও আবেদন সহায়তা"
+        },
+
+        {
+            name:"CV / Resume",
+            price:"২০০",
+            description:"পেশাদার CV তৈরিতে সহায়তা"
+        }
+
+    ],
+
+    train: [
+
+        {
+            name:"একক ট্রেন টিকেট",
+            price:"১০০",
+            description:"ট্রেন টিকেট সংক্রান্ত সহায়তা"
+        },
+
+        {
+            name:"রিটার্ন ট্রেন টিকেট",
+            price:"১৫০",
+            description:"আসা-যাওয়ার টিকেট সহায়তা"
+        }
+
+    ],
+
+    flight: [
+
+        {
+            name:"দেশীয় ফ্লাইট",
+            price:"৩০০",
+            description:"দেশীয় ফ্লাইট খোঁজা ও টিকেট সহায়তা"
+        },
+
+        {
+            name:"আন্তর্জাতিক ফ্লাইট",
+            price:"৫০০",
+            description:"আন্তর্জাতিক ফ্লাইট খোঁজা ও টিকেট সহায়তা"
+        }
+
+    ],
+
+    passport: [
+
+        {
+            name:"নতুন পাসপোর্ট",
+            price:"২০০",
+            description:"আবেদন প্রক্রিয়ায় সহায়তা"
+        },
+
+        {
+            name:"পাসপোর্ট নবায়ন",
+            price:"২০০",
+            description:"নবায়ন প্রক্রিয়ায় সহায়তা"
+        },
+
+        {
+            name:"পাসপোর্ট সংশোধন",
+            price:"৩০০",
+            description:"সংশোধন প্রক্রিয়ায় সহায়তা"
+        }
+
+    ],
+
+    visa: [
+
+        {
+            name:"Tourist Visa",
+            price:"৩০০",
+            description:"পর্যটন ভিসা তথ্য ও আবেদন সহায়তা"
+        },
+
+        {
+            name:"Work Visa",
+            price:"৫০০",
+            description:"কাজের ভিসা সংক্রান্ত তথ্য সহায়তা"
+        },
+
+        {
+            name:"Student Visa",
+            price:"৫০০",
+            description:"শিক্ষার্থী ভিসা সংক্রান্ত তথ্য সহায়তা"
+        }
+
+    ],
+
+    form: [
+
+        {
+            name:"সরকারি অনলাইন ফর্ম",
+            price:"১০০",
+            description:"অনলাইন ফর্ম পূরণে সহায়তা"
+        },
+
+        {
+            name:"চাকরির আবেদন ফর্ম",
+            price:"১০০",
+            description:"চাকরির আবেদন পূরণে সহায়তা"
+        },
+
+        {
+            name:"অন্যান্য অনলাইন ফর্ম",
+            price:"১০০",
+            description:"অন্যান্য ফর্ম পূরণে সহায়তা"
+        }
+
+    ],
+
+    pdf: [
+
+        {
+            name:"PDF তৈরি",
+            price:"৫০",
+            description:"PDF তৈরি ও সাজাতে সহায়তা"
+        },
+
+        {
+            name:"PDF Convert",
+            price:"৫০",
+            description:"PDF কনভার্টে সহায়তা"
+        }
+
+    ],
+
+    education: [
+
+        {
+            name:"অনলাইন ভর্তি",
+            price:"১০০",
+            description:"অনলাইন ভর্তি প্রক্রিয়ায় সহায়তা"
+        },
+
+        {
+            name:"শিক্ষা ফর্ম",
+            price:"১০০",
+            description:"শিক্ষা সংক্রান্ত ফর্ম পূরণে সহায়তা"
+        }
+
+    ],
+
+    search: [
+
+        {
+            name:"তথ্য খোঁজা",
+            price:"৫০",
+            description:"প্রয়োজনীয় বৈধ তথ্য খুঁজে দিতে সহায়তা"
+        }
+
+    ],
+
+    payment: [
+
+        {
+            name:"ডিজিটাল পেমেন্ট সহায়তা",
+            price:"৫০",
+            description:"বৈধ ডিজিটাল পেমেন্ট প্রক্রিয়ায় সহায়তা"
+        }
+
+    ]
+
+};
+
+document.querySelectorAll(".service-btn").forEach(button=>{
+
+    button.addEventListener("click",()=>{
 
         currentService = button.dataset.service;
-        currentPrice = button.dataset.price;
+        currentType = button.dataset.type;
 
-        selectedService.textContent = currentService;
-        selectedPrice.textContent = currentPrice;
+        categoryTitle.textContent =
+            currentService + " — সেবার ধরন";
+
+        subservices.innerHTML = "";
+
+        const categories =
+            serviceCategories[currentType] || [];
+
+        categories.forEach(item=>{
+
+            const div =
+                document.createElement("button");
+
+            div.type = "button";
+            div.className = "subservice";
+
+            div.innerHTML = `
+                <div class="subservice-info">
+                    <strong>${item.name}</strong>
+                    <span>${item.description}</span>
+                </div>
+
+                <div class="subservice-price">
+                    ৳ ${item.price}
+                </div>
+            `;
+
+            div.addEventListener("click",()=>{
+
+                currentSubService = item.name;
+
+                selectedService.textContent =
+                    currentService;
+
+                selectedSubService.textContent =
+                    item.name + " • সেবা চার্জ ৳ " + item.price;
+
+                categorySection.style.display =
+                    "none";
+
+                formSection.classList.add("show");
+
+                showDynamicFields(currentType);
+
+            });
+
+            subservices.appendChild(div);
+
+        });
+
+        categorySection.style.display = "block";
+        formSection.classList.remove("show");
 
         modal.classList.add("show");
 
@@ -1247,17 +1939,84 @@ document.querySelectorAll(".service-btn").forEach(button => {
 
 });
 
+function showDynamicFields(type){
+
+    document.querySelectorAll(".dynamic-fields")
+        .forEach(field=>{
+            field.classList.remove("show");
+        });
+
+    if(type === "nid"){
+        document.getElementById("nidFields")
+            .classList.add("show");
+    }
+
+    if(type === "birth"){
+        document.getElementById("birthFields")
+            .classList.add("show");
+    }
+
+    if(type === "tour"){
+        document.getElementById("travelFields")
+            .classList.add("show");
+    }
+
+    if(type === "job"){
+        document.getElementById("jobFields")
+            .classList.add("show");
+    }
+
+    if(type === "hotel"){
+        document.getElementById("hotelFields")
+            .classList.add("show");
+    }
+
+    if(type === "train" || type === "flight"){
+        document.getElementById("ticketFields")
+            .classList.add("show");
+    }
+
+    if(type === "passport"){
+        document.getElementById("passportFields")
+            .classList.add("show");
+    }
+
+    if(type === "visa"){
+        document.getElementById("visaFields")
+            .classList.add("show");
+    }
+
+}
+
+backBtn.addEventListener("click",()=>{
+
+    formSection.classList.remove("show");
+
+    categorySection.style.display =
+        "block";
+
+});
+
 function closeServiceModal(){
 
     modal.classList.remove("show");
 
     document.body.style.overflow = "";
 
+    serviceForm.reset();
+
+    formSection.classList.remove("show");
+
+    categorySection.style.display = "block";
+
 }
 
-closeModal.addEventListener("click", closeServiceModal);
+closeModal.addEventListener(
+    "click",
+    closeServiceModal
+);
 
-modal.addEventListener("click", event => {
+modal.addEventListener("click",event=>{
 
     if(event.target === modal){
         closeServiceModal();
@@ -1265,35 +2024,54 @@ modal.addEventListener("click", event => {
 
 });
 
-serviceForm.addEventListener("submit", event => {
+serviceForm.addEventListener("submit",event=>{
 
     event.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const whatsapp = document.getElementById("whatsapp").value.trim();
-    const address = document.getElementById("address").value.trim();
+    const name =
+        document.getElementById("name").value.trim();
+
+    const whatsapp =
+        document.getElementById("whatsapp").value.trim();
+
+    const address =
+        document.getElementById("address").value.trim();
+
+    const details =
+        document.getElementById("details").value.trim();
 
     if(!name || !whatsapp || !address){
-        alert("দয়া করে সব তথ্য পূরণ করুন।");
+
+        alert("দয়া করে নাম, WhatsApp নম্বর ও ঠিকানা পূরণ করুন।");
+
         return;
+
     }
 
-    const message =
-        "নতুন সেবা অনুরোধ%0A%0A" +
-        "সেবা: " + encodeURIComponent(currentService) + "%0A" +
-        "সেবা চার্জ: ৳ " + encodeURIComponent(currentPrice) + "%0A" +
-        "নাম: " + encodeURIComponent(name) + "%0A" +
-        "WhatsApp: " + encodeURIComponent(whatsapp) + "%0A" +
-        "ঠিকানা: " + encodeURIComponent(address);
+    let message =
+        "নতুন সেবা অনুরোধ\n\n" +
+        "সেবা: " + currentService + "\n" +
+        "উপ-সেবা: " + currentSubService + "\n" +
+        "নাম: " + name + "\n" +
+        "WhatsApp: " + whatsapp + "\n" +
+        "ঠিকানা: " + address + "\n";
 
-    const yourWhatsAppNumber = "8801XXXXXXXXX";
+    if(details){
+        message +=
+            "অতিরিক্ত তথ্য: " + details + "\n";
+    }
 
-    window.open(
-        "https://wa.me/" + yourWhatsAppNumber + "?text=" + message,
-        "_blank"
-    );
+    const yourWhatsAppNumber =
+        "8801XXXXXXXXX";
 
-    serviceForm.reset();
+    const url =
+        "https://wa.me/" +
+        yourWhatsAppNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(url,"_blank");
+
     closeServiceModal();
 
 });
