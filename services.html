@@ -1,962 +1,1306 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ডিজিটাল সেবা কেন্দ্রের সকল অনলাইন সেবা।">
-  <meta name="theme-color" content="#0f766e">
-  <title>সকল সেবা | ডিজিটাল সেবা কেন্দ্র</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<title>সেবাসমূহ | ডিজিটাল সেবা</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,"Noto Sans Bengali",sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input,
+textarea{
+    font-family:inherit;
+}
+
+.container{
+    width:min(1120px,92%);
+    margin:auto;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#fff;
+    border-bottom:1px solid #e8ebf2;
+}
+
+.navbar{
+    min-height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+    font-weight:800;
+    color:#1167d8;
+}
+
+.logo-icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:#1167d8;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    list-style:none;
+}
+
+.nav-links a{
+    display:block;
+    padding:9px 14px;
+    border-radius:8px;
+    font-size:15px;
+    color:#4a5568;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    background:#edf5ff;
+    color:#1167d8;
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:#edf5ff;
+    color:#1167d8;
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.page-header{
+    background:linear-gradient(135deg,#eef6ff,#fff);
+    padding:55px 0;
+    text-align:center;
+}
+
+.page-header h1{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.page-header p{
+    color:#687487;
+    max-width:650px;
+    margin:auto;
+}
+
+.services-section{
+    padding:55px 0 70px;
+}
+
+.toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:30px;
+}
+
+.search-box{
+    flex:1;
+    min-width:220px;
+}
+
+.search-box input{
+    width:100%;
+    height:48px;
+    border:1px solid #dce2eb;
+    border-radius:10px;
+    padding:0 16px;
+    outline:none;
+    background:#fff;
+    font-size:15px;
+}
+
+.search-box input:focus{
+    border-color:#1167d8;
+}
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.filter-btn{
+    border:1px solid #dce2eb;
+    background:#fff;
+    color:#596579;
+    padding:11px 15px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:#1167d8;
+    color:#fff;
+    border-color:#1167d8;
+}
+
+.service-count{
+    color:#707b8c;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.service-card{
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:16px;
+    padding:22px;
+    transition:.25s;
+    display:flex;
+    flex-direction:column;
+}
+
+.service-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(30,60,100,.09);
+}
+
+.service-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.service-icon{
+    width:48px;
+    height:48px;
+    border-radius:13px;
+    background:#edf5ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+}
+
+.category{
+    font-size:11px;
+    color:#1167d8;
+    background:#edf5ff;
+    padding:5px 8px;
+    border-radius:20px;
+    white-space:nowrap;
+}
+
+.service-card h3{
+    font-size:18px;
+    margin:16px 0 7px;
+}
+
+.service-card p{
+    color:#707b8c;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.service-bottom{
+    margin-top:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.price{
+    font-size:17px;
+    font-weight:800;
+    color:#172033;
+}
+
+.price span{
+    font-size:12px;
+    font-weight:500;
+    color:#7a8493;
+}
+
+.service-btn{
+    border:0;
+    background:#1167d8;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:700;
+}
+
+.service-btn:hover{
+    background:#0d56b5;
+}
+
+.no-result{
+    display:none;
+    text-align:center;
+    background:#fff;
+    border:1px solid #e5e9ef;
+    border-radius:15px;
+    padding:40px 20px;
+    color:#717c8d;
+}
+
+.notice{
+    margin-top:35px;
+    background:#fff8e6;
+    border:1px solid #f2dfad;
+    border-radius:14px;
+    padding:18px;
+    color:#6f5a20;
+    font-size:14px;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(10,20,35,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:2000;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(520px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    background:#fff;
+    border-radius:20px;
+    padding:25px;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+
+.close-btn{
+    position:absolute;
+    right:15px;
+    top:15px;
+    width:36px;
+    height:36px;
+    border:0;
+    border-radius:50%;
+    background:#f1f3f7;
+    color:#555;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.modal-title{
+    padding-right:45px;
+    margin-bottom:5px;
+    font-size:23px;
+}
+
+.modal-subtitle{
+    color:#727d8d;
+    font-size:14px;
+    margin-bottom:22px;
+}
+
+.selected-service{
+    background:#edf5ff;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:20px;
+}
+
+.selected-service strong{
+    display:block;
+    color:#1167d8;
+}
+
+.selected-service span{
+    font-size:14px;
+    color:#566275;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-size:14px;
+    font-weight:700;
+}
+
+.form-group input,
+.form-group textarea{
+    width:100%;
+    border:1px solid #dce2eb;
+    border-radius:10px;
+    padding:12px 13px;
+    outline:none;
+    font-size:14px;
+    background:#fff;
+}
+
+.form-group input{
+    height:46px;
+}
+
+.form-group textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    border-color:#1167d8;
+}
+
+.submit-btn{
+    width:100%;
+    height:48px;
+    border:0;
+    border-radius:10px;
+    background:#1167d8;
+    color:#fff;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#0d56b5;
+}
+
+footer{
+    background:#101827;
+    color:#fff;
+    padding:40px 0 20px;
+}
+
+.footer-content{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:35px;
+    padding-bottom:30px;
+}
+
+.footer-logo{
+    color:#fff;
+    margin-bottom:12px;
+}
+
+.footer-content p{
+    color:#aeb8c8;
+    font-size:14px;
+}
+
+.footer-title{
+    font-size:16px;
+    margin-bottom:12px;
+}
+
+.footer-links{
+    list-style:none;
+}
+
+.footer-links li{
+    margin-bottom:8px;
+}
+
+.footer-links a{
+    color:#aeb8c8;
+    font-size:14px;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
+.copyright{
+    border-top:1px solid #273142;
+    padding-top:18px;
+    text-align:center;
+    color:#9aa5b6;
+    font-size:13px;
+}
+
+@media(max-width:900px){
+
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    :root {
-      --primary: #0f766e;
-      --primary-dark: #0b5f59;
-      --primary-light: #e7f7f4;
-      --text: #172033;
-      --muted: #667085;
-      --border: #e5e7eb;
-      --background: #f7f9fc;
-      --white: #ffffff;
+    .footer-content{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    .navbar{
+        min-height:64px;
     }
 
-    html {
-      scroll-behavior: smooth;
+    .menu-btn{
+        display:block;
     }
 
-    body {
-      font-family: Arial, "Noto Sans Bengali", "SolaimanLipi", sans-serif;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.6;
+    .nav-links{
+        position:absolute;
+        top:64px;
+        left:0;
+        right:0;
+        background:#fff;
+        border-top:1px solid #e8ebf2;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        padding:10px;
+        box-shadow:0 10px 25px rgba(0,0,0,.08);
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    .nav-links.show{
+        display:flex;
     }
 
-    button,
-    input {
-      font: inherit;
+    .nav-links a{
+        padding:12px 14px;
     }
 
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
+    .page-header{
+        padding:40px 0;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,.97);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
+    .page-header h1{
+        font-size:30px;
     }
 
-    .navbar {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+    .services-section{
+        padding:40px 0 55px;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--primary);
-      font-size: 19px;
-      font-weight: 800;
+    .services-grid{
+        grid-template-columns:1fr;
     }
 
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      background: var(--primary);
-      color: white;
-      font-size: 20px;
+    .toolbar{
+        display:block;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      list-style: none;
+    .filters{
+        margin-top:10px;
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        padding-bottom:5px;
     }
 
-    .nav-links a {
-      color: #344054;
-      font-size: 14px;
-      font-weight: 600;
+    .filter-btn{
+        white-space:nowrap;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--primary);
+    .footer-content{
+        grid-template-columns:1fr;
     }
 
-    .mobile-menu {
-      display: none;
-      border: 0;
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: var(--primary-light);
-      color: var(--primary);
-      font-size: 21px;
-      cursor: pointer;
+    .modal{
+        padding:12px;
     }
 
-    .page-header {
-      padding: 65px 0 45px;
-      background: linear-gradient(135deg, #eafaf6, #ffffff 60%, #eff6ff);
-      text-align: center;
+    .modal-box{
+        padding:20px;
+        border-radius:16px;
     }
-
-    .page-badge {
-      display: inline-block;
-      padding: 7px 13px;
-      border-radius: 30px;
-      background: #dff6ef;
-      color: #087f5b;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 13px;
-    }
-
-    .page-header h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-
-    .page-header p {
-      max-width: 650px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .services-section {
-      padding: 45px 0 75px;
-    }
-
-    .toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .search-box {
-      position: relative;
-      flex: 1;
-      max-width: 430px;
-    }
-
-    .search-box input {
-      width: 100%;
-      height: 48px;
-      padding: 0 17px 0 45px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      outline: none;
-      background: white;
-      color: var(--text);
-    }
-
-    .search-box input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(15,118,110,.08);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #98a2b3;
-    }
-
-    .service-count {
-      color: var(--muted);
-      font-size: 14px;
-      white-space: nowrap;
-    }
-
-    .categories {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
-    .category-btn {
-      border: 1px solid var(--border);
-      background: white;
-      color: #475467;
-      padding: 9px 15px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      transition: .2s;
-    }
-
-    .category-btn:hover,
-    .category-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 17px;
-    }
-
-    .service-card {
-      display: flex;
-      flex-direction: column;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      padding: 21px;
-      transition: .25s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      border-color: #b7ddd7;
-      box-shadow: 0 13px 30px rgba(16,24,40,.07);
-    }
-
-    .service-icon {
-      width: 50px;
-      height: 50px;
-      display: grid;
-      place-items: center;
-      border-radius: 13px;
-      background: var(--primary-light);
-      font-size: 23px;
-      margin-bottom: 14px;
-    }
-
-    .service-card h2 {
-      font-size: 17px;
-      line-height: 1.4;
-      margin-bottom: 7px;
-    }
-
-    .service-card p {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 15px;
-    }
-
-    .service-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: auto;
-    }
-
-    .category-label {
-      color: #98a2b3;
-      font-size: 11px;
-    }
-
-    .service-btn {
-      border: 0;
-      background: var(--primary);
-      color: white;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .service-btn:hover {
-      background: var(--primary-dark);
-    }
-
-    .no-result {
-      display: none;
-      text-align: center;
-      padding: 50px 20px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-    }
-
-    .no-result div {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    .no-result h3 {
-      margin-bottom: 5px;
-    }
-
-    .no-result p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .notice {
-      margin-top: 40px;
-      padding: 18px 20px;
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      border-radius: 14px;
-      color: #854d0e;
-      font-size: 13px;
-    }
-
-    .contact {
-      padding: 65px 0;
-      background: white;
-    }
-
-    .contact-box {
-      padding: 42px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #0f766e, #115e59);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .contact-box h2 {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .contact-box p {
-      max-width: 620px;
-      color: #d8f4ef;
-      font-size: 14px;
-    }
-
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 19px;
-      border-radius: 10px;
-      background: white;
-      color: var(--primary);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    footer {
-      background: #101828;
-      color: white;
-      padding: 40px 0 18px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 35px;
-      margin-bottom: 28px;
-    }
-
-    .footer-logo {
-      color: white;
-      margin-bottom: 11px;
-    }
-
-    .footer-description {
-      max-width: 390px;
-      color: #98a2b3;
-      font-size: 13px;
-    }
-
-    .footer-title {
-      font-size: 15px;
-      margin-bottom: 11px;
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 7px;
-      color: #98a2b3;
-      font-size: 13px;
-    }
-
-    .footer-links a:hover {
-      color: white;
-    }
-
-    .copyright {
-      border-top: 1px solid #344054;
-      padding-top: 16px;
-      text-align: center;
-      color: #98a2b3;
-      font-size: 12px;
-    }
-
-    @media (max-width: 950px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 720px) {
-      .mobile-menu {
-        display: block;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 2px;
-        padding: 12px 4%;
-        background: white;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links a {
-        display: block;
-        padding: 10px;
-      }
-
-      .toolbar {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .search-box {
-        max-width: none;
-      }
-
-      .service-count {
-        text-align: right;
-      }
-
-      .contact-box {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 32px 25px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .page-header {
-        padding: 50px 0 35px;
-      }
-
-      .services-section {
-        padding: 35px 0 55px;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .categories {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 5px;
-      }
-
-      .category-btn {
-        white-space: nowrap;
-      }
-
-      .contact-box h2 {
-        font-size: 24px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <header>
+<header>
     <div class="container navbar">
 
-      <a href="index.html" class="logo">
-        <span class="logo-icon">✓</span>
-        <span>ডিজিটাল সেবা</span>
-      </a>
+        <a href="index.html" class="logo">
+            <span class="logo-icon">DS</span>
+            <span>ডিজিটাল সেবা</span>
+        </a>
 
-      <button class="mobile-menu" id="mobileMenu">
-        ☰
-      </button>
+        <button class="menu-btn" id="menuBtn">☰</button>
 
-      <nav>
         <ul class="nav-links" id="navLinks">
-          <li>
-            <a href="index.html">হোম</a>
-          </li>
-
-          <li>
-            <a href="services.html" class="active">সেবাসমূহ</a>
-          </li>
-
-          <li>
-            <a href="#contact">যোগাযোগ</a>
-          </li>
+            <li><a href="index.html">হোম</a></li>
+            <li><a href="services.html" class="active">সেবাসমূহ</a></li>
+            <li><a href="index.html#process">কিভাবে কাজ করে</a></li>
+            <li><a href="index.html#contact">যোগাযোগ</a></li>
         </ul>
-      </nav>
 
     </div>
-  </header>
+</header>
 
-  <main>
-
-    <section class="page-header">
-      <div class="container">
-
-        <div class="page-badge">
-          আমাদের ডিজিটাল সেবা
-        </div>
-
-        <h1>আপনার প্রয়োজনীয় সেবা বেছে নিন</h1>
-
+<section class="page-header">
+    <div class="container">
+        <h1>আমাদের সকল সেবা</h1>
         <p>
-          সেবা খুঁজে পেতে সার্চ করুন অথবা
-          বিভাগ নির্বাচন করুন।
+            প্রয়োজনীয় সেবা নির্বাচন করুন, চার্জ দেখুন এবং আপনার তথ্য দিয়ে
+            সেবা নেওয়ার অনুরোধ জমা দিন।
         </p>
+    </div>
+</section>
 
-      </div>
-    </section>
+<section class="services-section">
 
-    <section class="services-section">
-
-      <div class="container">
+    <div class="container">
 
         <div class="toolbar">
 
-          <div class="search-box">
-            <span class="search-icon">⌕</span>
+            <div class="search-box">
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="সেবা খুঁজুন..."
+                >
+            </div>
 
-            <input
-              type="search"
-              id="searchInput"
-              placeholder="সেবা খুঁজুন..."
-              autocomplete="off"
-            >
-          </div>
+            <div class="filters">
 
-          <div class="service-count">
-            মোট <strong id="serviceCount">16</strong>টি সেবা
-          </div>
+                <button class="filter-btn active" data-category="all">
+                    সব সেবা
+                </button>
+
+                <button class="filter-btn" data-category="document">
+                    ডকুমেন্ট
+                </button>
+
+                <button class="filter-btn" data-category="travel">
+                    ভ্রমণ
+                </button>
+
+                <button class="filter-btn" data-category="job">
+                    চাকরি
+                </button>
+
+                <button class="filter-btn" data-category="online">
+                    অনলাইন
+                </button>
+
+                <button class="filter-btn" data-category="other">
+                    অন্যান্য
+                </button>
+
+            </div>
 
         </div>
 
-        <div class="categories">
-
-          <button class="category-btn active" data-category="all">
-            সব সেবা
-          </button>
-
-          <button class="category-btn" data-category="document">
-            ডকুমেন্ট
-          </button>
-
-          <button class="category-btn" data-category="travel">
-            ভ্রমণ
-          </button>
-
-          <button class="category-btn" data-category="job">
-            চাকরি
-          </button>
-
-          <button class="category-btn" data-category="online">
-            অনলাইন সেবা
-          </button>
-
-          <button class="category-btn" data-category="other">
-            অন্যান্য
-          </button>
-
+        <div class="service-count" id="serviceCount">
+            মোট ১৬টি সেবা
         </div>
 
         <div class="services-grid" id="servicesGrid">
 
-          <article class="service-card" data-category="document" data-name="nid জাতীয় পরিচয়পত্র">
-            <div class="service-icon">🪪</div>
-            <h2>NID / জাতীয় পরিচয়পত্র</h2>
-            <p>বৈধ NID আবেদন ও প্রয়োজনীয় তথ্য সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">ডকুমেন্ট</span>
-              <button class="service-btn" data-service="NID / জাতীয় পরিচয়পত্র">সেবা নিন</button>
-            </div>
-          </article>
+            <div class="service-card" data-category="document" data-name="NID জাতীয় পরিচয়পত্র">
 
-          <article class="service-card" data-category="document" data-name="জন্মনিবন্ধন জন্ম সনদ">
-            <div class="service-icon">📜</div>
-            <h2>জন্মনিবন্ধন</h2>
-            <p>জন্মনিবন্ধন আবেদন ও সংশোধন সংক্রান্ত সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">ডকুমেন্ট</span>
-              <button class="service-btn" data-service="জন্মনিবন্ধন">সেবা নিন</button>
-            </div>
-          </article>
+                <div class="service-top">
+                    <div class="service-icon">🪪</div>
+                    <span class="category">ডকুমেন্ট</span>
+                </div>
 
-          <article class="service-card" data-category="online" data-name="মোবাইল কল তথ্য">
-            <div class="service-icon">📱</div>
-            <h2>মোবাইল তথ্য সহায়তা</h2>
-            <p>নিজের সংযোগের বৈধ তথ্য যাচাইয়ে সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">অনলাইন</span>
-              <button class="service-btn" data-service="মোবাইল তথ্য সহায়তা">সেবা নিন</button>
-            </div>
-          </article>
+                <h3>NID / জাতীয় পরিচয়পত্র</h3>
 
-          <article class="service-card" data-category="travel" data-name="ট্যুর প্ল্যান ভ্রমণ">
-            <div class="service-icon">🗺️</div>
-            <h2>ট্যুর প্ল্যান</h2>
-            <p>সময় ও বাজেট অনুযায়ী ভ্রমণ পরিকল্পনায় সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">ভ্রমণ</span>
-              <button class="service-btn" data-service="ট্যুর প্ল্যান">সেবা নিন</button>
-            </div>
-          </article>
+                <p>
+                    NID সম্পর্কিত অনলাইন তথ্য ও প্রক্রিয়ায় সহায়তা।
+                </p>
 
-          <article class="service-card" data-category="travel" data-name="হোটেল বুকিং">
-            <div class="service-icon">🏨</div>
-            <h2>হোটেল বুকিং</h2>
-            <p>গন্তব্য অনুযায়ী হোটেল খোঁজা ও বুকিং সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">ভ্রমণ</span>
-              <button class="service-btn" data-service="হোটেল বুকিং">সেবা নিন</button>
-            </div>
-          </article>
+                <div class="service-bottom">
+                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="NID / জাতীয় পরিচয়পত্র" data-price="১০০">
+                        সেবা নিন
+                    </button>
+                </div>
 
-          <article class="service-card" data-category="job" data-name="চাকরি job">
-            <div class="service-icon">💼</div>
-            <h2>চাকরি খোঁজা</h2>
-            <p>দেশি ও বিদেশি চাকরি খুঁজে আবেদন করতে সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">চাকরি</span>
-              <button class="service-btn" data-service="চাকরি খোঁজা">সেবা নিন</button>
             </div>
-          </article>
 
-          <article class="service-card" data-category="travel" data-name="ট্রেন টিকেট">
-            <div class="service-icon">🚆</div>
-            <h2>ট্রেন টিকেট</h2>
-            <p>অফিসিয়াল ব্যবস্থায় ট্রেন টিকেট সংক্রান্ত সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">ভ্রমণ</span>
-              <button class="service-btn" data-service="ট্রেন টিকেট">সেবা নিন</button>
-            </div>
-          </article>
+            <div class="service-card" data-category="document" data-name="জন্মনিবন্ধন">
 
-          <article class="service-card" data-category="travel" data-name="বিমান টিকেট flight">
-            <div class="service-icon">✈️</div>
-            <h2>বিমান টিকেট</h2>
-            <p>ফ্লাইট খোঁজা, ভাড়া যাচাই ও টিকেট সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">ভ্রমণ</span>
-              <button class="service-btn" data-service="বিমান টিকেট">সেবা নিন</button>
-            </div>
-          </article>
+                <div class="service-top">
+                    <div class="service-icon">📄</div>
+                    <span class="category">ডকুমেন্ট</span>
+                </div>
 
-          <article class="service-card" data-category="document" data-name="পাসপোর্ট passport">
-            <div class="service-icon">🛂</div>
-            <h2>পাসপোর্ট সেবা</h2>
-            <p>পাসপোর্ট আবেদন প্রক্রিয়ায় তথ্য ও ফর্ম সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">ডকুমেন্ট</span>
-              <button class="service-btn" data-service="পাসপোর্ট সেবা">সেবা নিন</button>
-            </div>
-          </article>
+                <h3>জন্মনিবন্ধন</h3>
 
-          <article class="service-card" data-category="travel" data-name="ভিসা visa">
-            <div class="service-icon">🌍</div>
-            <h2>ভিসা তথ্য</h2>
-            <p>ভ্রমণ বা চাকরির ভিসা সম্পর্কে প্রয়োজনীয় তথ্য।</p>
-            <div class="service-footer">
-              <span class="category-label">ভ্রমণ</span>
-              <button class="service-btn" data-service="ভিসা তথ্য">সেবা নিন</button>
-            </div>
-          </article>
+                <p>
+                    জন্মনিবন্ধন সংক্রান্ত অনলাইন প্রক্রিয়ায় সহায়তা।
+                </p>
 
-          <article class="service-card" data-category="online" data-name="অনলাইন ফর্ম পূরণ">
-            <div class="service-icon">📄</div>
-            <h2>অনলাইন ফর্ম</h2>
-            <p>বিভিন্ন বৈধ অনলাইন ফর্ম পূরণে সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">অনলাইন</span>
-              <button class="service-btn" data-service="অনলাইন ফর্ম">সেবা নিন</button>
-            </div>
-          </article>
+                <div class="service-bottom">
+                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="জন্মনিবন্ধন" data-price="১০০">
+                        সেবা নিন
+                    </button>
+                </div>
 
-          <article class="service-card" data-category="document" data-name="pdf document ডকুমেন্ট">
-            <div class="service-icon">📑</div>
-            <h2>PDF ও ডকুমেন্ট</h2>
-            <p>PDF তৈরি, রূপান্তর ও ডকুমেন্ট প্রস্তুত করা।</p>
-            <div class="service-footer">
-              <span class="category-label">ডকুমেন্ট</span>
-              <button class="service-btn" data-service="PDF ও ডকুমেন্ট">সেবা নিন</button>
             </div>
-          </article>
 
-          <article class="service-card" data-category="online" data-name="শিক্ষা ভর্তি ফলাফল">
-            <div class="service-icon">🎓</div>
-            <h2>শিক্ষা সেবা</h2>
-            <p>ভর্তি, ফলাফল ও শিক্ষা সংক্রান্ত তথ্য সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">অনলাইন</span>
-              <button class="service-btn" data-service="শিক্ষা সেবা">সেবা নিন</button>
-            </div>
-          </article>
+            <div class="service-card" data-category="online" data-name="মোবাইল তথ্য সহায়তা">
 
-          <article class="service-card" data-category="other" data-name="হাসপাতাল ডাক্তার">
-            <div class="service-icon">🏥</div>
-            <h2>হাসপাতাল তথ্য</h2>
-            <p>হাসপাতাল, ডাক্তার ও অ্যাপয়েন্টমেন্ট তথ্য।</p>
-            <div class="service-footer">
-              <span class="category-label">অন্যান্য</span>
-              <button class="service-btn" data-service="হাসপাতাল তথ্য">সেবা নিন</button>
-            </div>
-          </article>
+                <div class="service-top">
+                    <div class="service-icon">📱</div>
+                    <span class="category">অনলাইন</span>
+                </div>
 
-          <article class="service-card" data-category="online" data-name="অনলাইন তথ্য অনুসন্ধান">
-            <div class="service-icon">🔎</div>
-            <h2>অনলাইন তথ্য খোঁজা</h2>
-            <p>নির্ভরযোগ্য অনলাইন তথ্য খুঁজে দেওয়ার সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">অনলাইন</span>
-              <button class="service-btn" data-service="অনলাইন তথ্য খোঁজা">সেবা নিন</button>
-            </div>
-          </article>
+                <h3>মোবাইল তথ্য সহায়তা</h3>
 
-          <article class="service-card" data-category="online" data-name="ডিজিটাল পেমেন্ট payment">
-            <div class="service-icon">💳</div>
-            <h2>ডিজিটাল পেমেন্ট</h2>
-            <p>অনুমোদিত অনলাইন পেমেন্ট প্রক্রিয়ায় সহায়তা।</p>
-            <div class="service-footer">
-              <span class="category-label">অনলাইন</span>
-              <button class="service-btn" data-service="ডিজিটাল পেমেন্ট">সেবা নিন</button>
+                <p>
+                    নিজের সংযোগের বৈধ তথ্য যাচাইয়ে সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="মোবাইল তথ্য সহায়তা" data-price="৫০">
+                        সেবা নিন
+                    </button>
+                </div>
+
             </div>
-          </article>
+
+            <div class="service-card" data-category="travel" data-name="ট্যুর প্ল্যান">
+
+                <div class="service-top">
+                    <div class="service-icon">🗺️</div>
+                    <span class="category">ভ্রমণ</span>
+                </div>
+
+                <h3>ট্যুর প্ল্যান</h3>
+
+                <p>
+                    বাজেট ও সময় অনুযায়ী ভ্রমণ পরিকল্পনায় সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ৩০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="ট্যুর প্ল্যান" data-price="৩০০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="travel" data-name="হোটেল বুকিং">
+
+                <div class="service-top">
+                    <div class="service-icon">🏨</div>
+                    <span class="category">ভ্রমণ</span>
+                </div>
+
+                <h3>হোটেল বুকিং</h3>
+
+                <p>
+                    প্রয়োজন অনুযায়ী হোটেল খোঁজা ও বুকিং সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ২০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="হোটেল বুকিং" data-price="২০০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="job" data-name="চাকরি খোঁজা">
+
+                <div class="service-top">
+                    <div class="service-icon">💼</div>
+                    <span class="category">চাকরি</span>
+                </div>
+
+                <h3>চাকরি খোঁজা</h3>
+
+                <p>
+                    উপযুক্ত চাকরি খোঁজা ও আবেদন প্রক্রিয়ায় সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ২০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="চাকরি খোঁজা" data-price="২০০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="travel" data-name="ট্রেন টিকেট">
+
+                <div class="service-top">
+                    <div class="service-icon">🚆</div>
+                    <span class="category">ভ্রমণ</span>
+                </div>
+
+                <h3>ট্রেন টিকেট</h3>
+
+                <p>
+                    ট্রেনের সময়সূচি ও টিকেট সংক্রান্ত সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="ট্রেন টিকেট" data-price="১০০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="travel" data-name="বিমান টিকেট">
+
+                <div class="service-top">
+                    <div class="service-icon">✈️</div>
+                    <span class="category">ভ্রমণ</span>
+                </div>
+
+                <h3>বিমান টিকেট</h3>
+
+                <p>
+                    ফ্লাইট খোঁজা, সময়সূচি ও টিকেট সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ৩০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="বিমান টিকেট" data-price="৩০০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="document" data-name="পাসপোর্ট সেবা">
+
+                <div class="service-top">
+                    <div class="service-icon">📘</div>
+                    <span class="category">ডকুমেন্ট</span>
+                </div>
+
+                <h3>পাসপোর্ট সেবা</h3>
+
+                <p>
+                    পাসপোর্ট আবেদন ও অনলাইন প্রক্রিয়ায় সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ২০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="পাসপোর্ট সেবা" data-price="২০০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="document" data-name="ভিসা তথ্য">
+
+                <div class="service-top">
+                    <div class="service-icon">🌍</div>
+                    <span class="category">ডকুমেন্ট</span>
+                </div>
+
+                <h3>ভিসা তথ্য</h3>
+
+                <p>
+                    ভিসা সংক্রান্ত প্রয়োজনীয় তথ্য ও প্রক্রিয়ায় সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ২০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="ভিসা তথ্য" data-price="২০০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="online" data-name="অনলাইন ফর্ম">
+
+                <div class="service-top">
+                    <div class="service-icon">📝</div>
+                    <span class="category">অনলাইন</span>
+                </div>
+
+                <h3>অনলাইন ফর্ম</h3>
+
+                <p>
+                    বিভিন্ন অনলাইন ফর্ম পূরণ ও সাবমিশনে সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="অনলাইন ফর্ম" data-price="১০০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="online" data-name="PDF ডকুমেন্ট">
+
+                <div class="service-top">
+                    <div class="service-icon">📑</div>
+                    <span class="category">অনলাইন</span>
+                </div>
+
+                <h3>PDF ও ডকুমেন্ট</h3>
+
+                <p>
+                    PDF তৈরি, কনভার্ট ও প্রয়োজনীয় ডকুমেন্ট সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="PDF ও ডকুমেন্ট" data-price="৫০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="online" data-name="শিক্ষা সেবা">
+
+                <div class="service-top">
+                    <div class="service-icon">🎓</div>
+                    <span class="category">অনলাইন</span>
+                </div>
+
+                <h3>শিক্ষা সেবা</h3>
+
+                <p>
+                    অনলাইন শিক্ষা সংক্রান্ত ফর্ম ও তথ্য সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ১০০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="শিক্ষা সেবা" data-price="১০০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="other" data-name="হাসপাতাল তথ্য">
+
+                <div class="service-top">
+                    <div class="service-icon">🏥</div>
+                    <span class="category">অন্যান্য</span>
+                </div>
+
+                <h3>হাসপাতাল তথ্য</h3>
+
+                <p>
+                    হাসপাতাল, ডাক্তার ও প্রয়োজনীয় তথ্য খুঁজতে সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="হাসপাতাল তথ্য" data-price="৫০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="online" data-name="অনলাইন তথ্য খোঁজা">
+
+                <div class="service-top">
+                    <div class="service-icon">🔎</div>
+                    <span class="category">অনলাইন</span>
+                </div>
+
+                <h3>অনলাইন তথ্য খোঁজা</h3>
+
+                <p>
+                    প্রয়োজনীয় অনলাইন তথ্য খুঁজে পেতে সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="অনলাইন তথ্য খোঁজা" data-price="৫০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="service-card" data-category="other" data-name="ডিজিটাল পেমেন্ট">
+
+                <div class="service-top">
+                    <div class="service-icon">💳</div>
+                    <span class="category">অন্যান্য</span>
+                </div>
+
+                <h3>ডিজিটাল পেমেন্ট</h3>
+
+                <p>
+                    বৈধ অনলাইন পেমেন্ট ও ডিজিটাল লেনদেনে সহায়তা।
+                </p>
+
+                <div class="service-bottom">
+                    <div class="price">৳ ৫০ <span>সেবা চার্জ</span></div>
+                    <button class="service-btn" data-service="ডিজিটাল পেমেন্ট" data-price="৫০">
+                        সেবা নিন
+                    </button>
+                </div>
+
+            </div>
 
         </div>
 
         <div class="no-result" id="noResult">
-          <div>🔍</div>
-          <h3>কোনো সেবা পাওয়া যায়নি</h3>
-          <p>অন্য কোনো শব্দ দিয়ে আবার চেষ্টা করুন।</p>
+            কোনো সেবা পাওয়া যায়নি।
         </div>
 
         <div class="notice">
-          <strong>গুরুত্বপূর্ণ:</strong>
-          সরকারি বা ব্যক্তিগত তথ্যভিত্তিক সেবার ক্ষেত্রে
-          শুধুমাত্র বৈধ ও অনুমোদিত প্রক্রিয়ায় সহায়তা প্রদান করা হবে।
+            <strong>গুরুত্বপূর্ণ:</strong>
+            সরকারি বা ব্যক্তিগত তথ্যের ক্ষেত্রে শুধুমাত্র বৈধ ও অনুমোদিত
+            প্রক্রিয়ায় সহায়তা প্রদান করা হবে। প্রয়োজনীয় তথ্য ছাড়া কোনো
+            অননুমোদিত তথ্য সংগ্রহ বা ব্যবহার করা হবে না।
         </div>
-
-      </div>
-
-    </section>
-
-    <section class="contact" id="contact">
-
-      <div class="container">
-
-        <div class="contact-box">
-
-          <div>
-            <h2>আপনার প্রয়োজনীয় সেবা নেই?</h2>
-            <p>
-              আপনার প্রয়োজনের কথা জানালে আমরা
-              সম্ভব হলে উপযুক্ত সেবা বা তথ্যের পথ দেখাব।
-            </p>
-          </div>
-
-          <a href="tel:01XXXXXXXXX" class="contact-btn">
-            📞 যোগাযোগ করুন
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer>
-
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <div>
-          <div class="logo footer-logo">
-            <span class="logo-icon">✓</span>
-            <span>ডিজিটাল সেবা</span>
-          </div>
-
-          <p class="footer-description">
-            বিভিন্ন অনলাইন ও ডিজিটাল কাজে সহজ
-            এবং স্বচ্ছভাবে সহায়তা করার একটি প্ল্যাটফর্ম।
-          </p>
-        </div>
-
-        <div>
-          <h3 class="footer-title">সাইট</h3>
-
-          <ul class="footer-links">
-            <li><a href="index.html">হোম</a></li>
-            <li><a href="services.html">সকল সেবা</a></li>
-            <li><a href="#contact">যোগাযোগ</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="footer-title">যোগাযোগ</h3>
-
-          <ul class="footer-links">
-            <li>📞 01XXXXXXXXX</li>
-            <li>✉️ your@email.com</li>
-            <li>📍 বাংলাদেশ</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="copyright">
-        © <span id="year"></span> ডিজিটাল সেবা। সর্বস্বত্ব সংরক্ষিত।
-      </div>
 
     </div>
 
-  </footer>
+</section>
 
-  <script>
-    const mobileMenu = document.getElementById("mobileMenu");
-    const navLinks = document.getElementById("navLinks");
-    const searchInput = document.getElementById("searchInput");
-    const cards = [...document.querySelectorAll(".service-card")];
-    const categoryButtons = [...document.querySelectorAll(".category-btn")];
-    const serviceCount = document.getElementById("serviceCount");
-    const noResult = document.getElementById("noResult");
+<div class="modal" id="serviceModal">
 
-    let selectedCategory = "all";
+    <div class="modal-box">
 
-    mobileMenu.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+        <button class="close-btn" id="closeModal">×</button>
+
+        <h2 class="modal-title">সেবা নেওয়ার ফর্ম</h2>
+
+        <p class="modal-subtitle">
+            নিচের তথ্যগুলো সঠিকভাবে পূরণ করে সেবা জমা দিন।
+        </p>
+
+        <div class="selected-service">
+
+            <strong id="selectedService">
+                সেবা
+            </strong>
+
+            <span>
+                সেবা চার্জ: ৳ <span id="selectedPrice">0</span>
+            </span>
+
+        </div>
+
+        <form id="serviceForm">
+
+            <div class="form-group">
+                <label for="name">আপনার নাম</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="আপনার পূর্ণ নাম লিখুন"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp নম্বর</label>
+
+                <input
+                    type="tel"
+                    id="whatsapp"
+                    placeholder="01XXXXXXXXX"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="address">ঠিকানা</label>
+
+                <textarea
+                    id="address"
+                    placeholder="আপনার বর্তমান ঠিকানা লিখুন"
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                সেবা জমা দিন
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div>
+
+                <a href="index.html" class="logo footer-logo">
+                    <span class="logo-icon">DS</span>
+                    <span>ডিজিটাল সেবা</span>
+                </a>
+
+                <p>
+                    বিভিন্ন অনলাইন সেবা ও তথ্য প্রক্রিয়ায়
+                    সহজ এবং দায়িত্বশীল সহায়তা।
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3 class="footer-title">দ্রুত লিংক</h3>
+
+                <ul class="footer-links">
+                    <li><a href="index.html">হোম</a></li>
+                    <li><a href="services.html">সেবাসমূহ</a></li>
+                    <li><a href="index.html#process">কিভাবে কাজ করে</a></li>
+                    <li><a href="index.html#contact">যোগাযোগ</a></li>
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h3 class="footer-title">যোগাযোগ</h3>
+
+                <ul class="footer-links">
+                    <li>📱 01XXXXXXXXX</li>
+                    <li>💬 WhatsApp</li>
+                    <li>📍 বাংলাদেশ</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 ডিজিটাল সেবা — সর্বস্বত্ব সংরক্ষিত।
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
     });
+});
 
-    document.querySelectorAll("#navLinks a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-      });
-    });
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const serviceCards = document.querySelectorAll(".service-card");
+const serviceCount = document.getElementById("serviceCount");
+const noResult = document.getElementById("noResult");
 
-    function filterServices() {
-      const keyword = searchInput.value.trim().toLowerCase();
-      let visibleCount = 0;
+let selectedCategory = "all";
 
-      cards.forEach(card => {
+function filterServices(){
+
+    const searchText = searchInput.value.toLowerCase().trim();
+
+    let visibleCount = 0;
+
+    serviceCards.forEach(card => {
+
         const category = card.dataset.category;
         const name = card.dataset.name.toLowerCase();
 
         const categoryMatch =
-          selectedCategory === "all" ||
-          category === selectedCategory;
+            selectedCategory === "all" ||
+            category === selectedCategory;
 
         const searchMatch =
-          !keyword ||
-          name.includes(keyword);
+            name.includes(searchText);
 
-        const visible =
-          categoryMatch && searchMatch;
+        if(categoryMatch && searchMatch){
 
-        card.style.display =
-          visible ? "flex" : "none";
+            card.style.display = "flex";
+            visibleCount++;
 
-        if (visible) {
-          visibleCount++;
+        }else{
+
+            card.style.display = "none";
+
         }
-      });
 
-      serviceCount.textContent = visibleCount;
-      noResult.style.display =
+    });
+
+    serviceCount.textContent =
+        "দেখানো হচ্ছে " + visibleCount + "টি সেবা";
+
+    noResult.style.display =
         visibleCount === 0 ? "block" : "none";
-    }
+}
 
-    categoryButtons.forEach(button => {
-      button.addEventListener("click", () => {
+searchInput.addEventListener("input", filterServices);
 
-        categoryButtons.forEach(item => {
-          item.classList.remove("active");
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
         });
 
         button.classList.add("active");
 
-        selectedCategory =
-          button.dataset.category;
+        selectedCategory = button.dataset.category;
 
         filterServices();
-      });
+
     });
 
-    searchInput.addEventListener(
-      "input",
-      filterServices
+});
+
+const modal = document.getElementById("serviceModal");
+const closeModal = document.getElementById("closeModal");
+const selectedService = document.getElementById("selectedService");
+const selectedPrice = document.getElementById("selectedPrice");
+const serviceForm = document.getElementById("serviceForm");
+
+let currentService = "";
+let currentPrice = "";
+
+document.querySelectorAll(".service-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        currentService = button.dataset.service;
+        currentPrice = button.dataset.price;
+
+        selectedService.textContent = currentService;
+        selectedPrice.textContent = currentPrice;
+
+        modal.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+function closeServiceModal(){
+
+    modal.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+}
+
+closeModal.addEventListener("click", closeServiceModal);
+
+modal.addEventListener("click", event => {
+
+    if(event.target === modal){
+        closeServiceModal();
+    }
+
+});
+
+serviceForm.addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const whatsapp = document.getElementById("whatsapp").value.trim();
+    const address = document.getElementById("address").value.trim();
+
+    if(!name || !whatsapp || !address){
+        alert("দয়া করে সব তথ্য পূরণ করুন।");
+        return;
+    }
+
+    const message =
+        "নতুন সেবা অনুরোধ%0A%0A" +
+        "সেবা: " + encodeURIComponent(currentService) + "%0A" +
+        "সেবা চার্জ: ৳ " + encodeURIComponent(currentPrice) + "%0A" +
+        "নাম: " + encodeURIComponent(name) + "%0A" +
+        "WhatsApp: " + encodeURIComponent(whatsapp) + "%0A" +
+        "ঠিকানা: " + encodeURIComponent(address);
+
+    const yourWhatsAppNumber = "8801XXXXXXXXX";
+
+    window.open(
+        "https://wa.me/" + yourWhatsAppNumber + "?text=" + message,
+        "_blank"
     );
 
-    document.querySelectorAll(".service-btn").forEach(button => {
-      button.addEventListener("click", () => {
+    serviceForm.reset();
+    closeServiceModal();
 
-        const service =
-          button.dataset.service;
+});
 
-        const message =
-          encodeURIComponent(
-            `আমি "${service}" সেবা নিতে চাই।`
-          );
+filterServices();
 
-        window.location.href =
-          `https://wa.me/8801XXXXXXXXX?text=${message}`;
-      });
-    });
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+</script>
 
 </body>
 </html>
