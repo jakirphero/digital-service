@@ -4,20 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>সেবাসমূহ | ডিজিটাল সেবা</title>
+<title>আমাদের সকল সেবা</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 body{
     font-family:Arial,"Noto Sans Bengali",sans-serif;
-    background:#f5f7fb;
+    background:#f5f8fc;
     color:#172033;
-    line-height:1.6;
 }
 
 a{
@@ -32,145 +33,107 @@ select{
     font-family:inherit;
 }
 
-.container{
-    width:min(1120px,92%);
-    margin:auto;
-}
-
-header{
+.navbar{
     position:sticky;
     top:0;
-    z-index:1000;
-    background:#fff;
-    border-bottom:1px solid #e8ebf2;
-}
-
-.navbar{
-    min-height:70px;
+    z-index:100;
+    background:#ffffff;
+    border-bottom:1px solid #e7ebf1;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    padding:15px 6%;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
     font-size:21px;
     font-weight:800;
-    color:#1167d8;
-}
-
-.logo-icon{
-    width:40px;
-    height:40px;
-    border-radius:11px;
-    background:#1167d8;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:17px;
+    color:#2563eb;
 }
 
 .nav-links{
     display:flex;
-    gap:8px;
-    list-style:none;
+    gap:22px;
+    align-items:center;
 }
 
 .nav-links a{
-    padding:9px 14px;
-    border-radius:8px;
-    color:#4d596b;
+    color:#4b5563;
+    font-weight:600;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.hero{
+    text-align:center;
+    padding:55px 20px 35px;
+}
+
+.hero h1{
+    font-size:34px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    color:#667085;
+    max-width:650px;
+    margin:auto;
+    line-height:1.7;
+}
+
+.search-area{
+    max-width:900px;
+    margin:0 auto 25px;
+    padding:0 20px;
+}
+
+.search-box{
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:15px 18px;
+    border:1px solid #dce3ec;
+    border-radius:13px;
+    outline:none;
+    background:#fff;
     font-size:15px;
 }
 
-.nav-links a:hover,
-.nav-links a.active{
-    background:#edf5ff;
-    color:#1167d8;
+.search-box input:focus{
+    border-color:#2563eb;
 }
 
-.menu-btn{
-    display:none;
-    width:42px;
-    height:42px;
-    border:0;
-    border-radius:10px;
-    background:#edf5ff;
-    color:#1167d8;
-    font-size:22px;
+.categories{
+    display:flex;
+    gap:9px;
+    overflow-x:auto;
+    padding:15px 0 5px;
 }
 
-.page-header{
-    background:linear-gradient(135deg,#eef6ff,#fff);
-    padding:55px 0;
-    text-align:center;
+.category-btn{
+    border:1px solid #dce3ec;
+    background:white;
+    padding:9px 16px;
+    border-radius:30px;
+    cursor:pointer;
+    white-space:nowrap;
+    color:#475467;
 }
 
-.page-header h1{
-    font-size:38px;
-    margin-bottom:10px;
-}
-
-.page-header p{
-    max-width:650px;
-    margin:auto;
-    color:#687487;
+.category-btn.active{
+    background:#2563eb;
+    color:white;
+    border-color:#2563eb;
 }
 
 .services-section{
-    padding:55px 0 70px;
-}
-
-.toolbar{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-bottom:28px;
-}
-
-.search{
-    flex:1;
-    min-width:220px;
-}
-
-.search input{
-    width:100%;
-    height:48px;
-    border:1px solid #dce2eb;
-    border-radius:10px;
-    padding:0 15px;
-    outline:none;
-    background:#fff;
-}
-
-.filters{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-}
-
-.filter-btn{
-    border:1px solid #dce2eb;
-    background:#fff;
-    padding:10px 14px;
-    border-radius:9px;
-    cursor:pointer;
-    color:#586476;
-}
-
-.filter-btn.active{
-    background:#1167d8;
-    color:#fff;
-    border-color:#1167d8;
-}
-
-.service-count{
-    margin-bottom:18px;
-    color:#727d8d;
-    font-size:14px;
+    max-width:1200px;
+    margin:auto;
+    padding:10px 20px 60px;
 }
 
 .services-grid{
@@ -181,229 +144,165 @@ header{
 
 .service-card{
     background:#fff;
-    border:1px solid #e4e9f0;
-    border-radius:16px;
+    border:1px solid #e7ebf1;
+    border-radius:18px;
     padding:22px;
-    transition:.25s;
+    box-shadow:0 5px 20px rgba(15,23,42,.04);
+    transition:.2s;
 }
 
 .service-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 12px 30px rgba(30,60,100,.09);
-}
-
-.service-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(15,23,42,.08);
 }
 
 .service-icon{
-    width:48px;
-    height:48px;
-    border-radius:13px;
-    background:#edf5ff;
+    width:55px;
+    height:55px;
+    border-radius:15px;
+    background:#eff6ff;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:24px;
-}
-
-.category{
-    font-size:11px;
-    color:#1167d8;
-    background:#edf5ff;
-    padding:5px 9px;
-    border-radius:20px;
+    font-size:28px;
+    margin-bottom:15px;
 }
 
 .service-card h3{
     font-size:18px;
-    margin:16px 0 7px;
+    margin-bottom:7px;
 }
 
 .service-card p{
-    color:#707b8c;
+    color:#667085;
     font-size:14px;
-    margin-bottom:18px;
+    line-height:1.6;
+    min-height:45px;
 }
 
 .service-bottom{
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     gap:10px;
+    margin-top:18px;
 }
 
-.price{
-    font-size:17px;
+.charge{
+    color:#16a34a;
+    font-size:18px;
     font-weight:800;
-}
-
-.price small{
-    display:block;
-    font-size:11px;
-    color:#7b8492;
-    font-weight:400;
 }
 
 .service-btn{
     border:0;
-    background:#1167d8;
+    background:#2563eb;
     color:#fff;
-    padding:10px 14px;
+    padding:10px 15px;
     border-radius:9px;
     cursor:pointer;
     font-weight:700;
 }
 
 .service-btn:hover{
-    background:#0d56b5;
+    background:#1d4ed8;
 }
 
-.no-result{
-    display:none;
-    background:#fff;
-    border:1px solid #e4e9f0;
-    padding:40px;
+.loading{
     text-align:center;
+    padding:50px 20px;
+    color:#667085;
+}
+
+.empty{
+    grid-column:1/-1;
+    text-align:center;
+    background:#fff;
+    padding:45px;
     border-radius:15px;
-    color:#727d8d;
+    color:#667085;
 }
 
 .notice{
-    margin-top:30px;
-    padding:17px;
-    background:#fff8e6;
-    border:1px solid #f0dda8;
-    border-radius:13px;
-    color:#6e5b22;
+    max-width:900px;
+    margin:0 auto 30px;
+    padding:15px 18px;
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    color:#9a3412;
+    border-radius:12px;
+    line-height:1.6;
     font-size:14px;
 }
 
 .modal{
+    display:none;
     position:fixed;
     inset:0;
-    background:rgba(10,20,35,.58);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:15px;
-    z-index:2000;
+    background:rgba(15,23,42,.6);
+    z-index:200;
+    padding:20px;
+    overflow-y:auto;
 }
 
 .modal.show{
     display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .modal-box{
-    width:min(540px,100%);
+    width:100%;
+    max-width:550px;
     max-height:92vh;
     overflow-y:auto;
     background:#fff;
     border-radius:20px;
-    padding:25px;
-    position:relative;
+    padding:24px;
 }
 
-.close{
-    position:absolute;
-    right:15px;
-    top:15px;
-    width:36px;
-    height:36px;
-    border:0;
-    border-radius:50%;
-    background:#f1f3f7;
-    font-size:21px;
-    cursor:pointer;
-}
-
-.modal-title{
-    font-size:23px;
-    padding-right:40px;
-    margin-bottom:5px;
-}
-
-.modal-text{
-    color:#737e8d;
-    font-size:14px;
-    margin-bottom:20px;
-}
-
-.subservices{
-    display:grid;
-    gap:10px;
-}
-
-.subservice{
-    width:100%;
-    padding:15px;
-    border:1px solid #dfe5ee;
-    background:#fff;
-    border-radius:11px;
-    text-align:left;
-    cursor:pointer;
+.modal-header{
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:15px;
-}
-
-.subservice:hover{
-    border-color:#1167d8;
-    background:#f6faff;
-}
-
-.subservice-info strong{
-    display:block;
-    font-size:15px;
-}
-
-.subservice-info span{
-    color:#7a8492;
-    font-size:12px;
-}
-
-.subservice-price{
-    white-space:nowrap;
-    color:#1167d8;
-    font-weight:800;
-}
-
-.form-section{
-    display:none;
-}
-
-.form-section.show{
-    display:block;
-}
-
-.back-btn{
-    border:0;
-    background:#edf5ff;
-    color:#1167d8;
-    padding:8px 12px;
-    border-radius:8px;
-    cursor:pointer;
-    margin-bottom:15px;
-}
-
-.selected-box{
-    background:#edf5ff;
-    padding:14px;
-    border-radius:11px;
     margin-bottom:20px;
 }
 
-.selected-box strong{
-    color:#1167d8;
-    display:block;
+.modal-header h2{
+    font-size:22px;
 }
 
-.selected-box span{
-    color:#596678;
-    font-size:13px;
+.close-btn{
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:50%;
+    background:#f1f5f9;
+    cursor:pointer;
+    font-size:22px;
+}
+
+.sub-services{
+    display:grid;
+    gap:10px;
+}
+
+.sub-service-btn{
+    width:100%;
+    text-align:left;
+    padding:14px;
+    border:1px solid #e1e7ef;
+    background:#f8fafc;
+    border-radius:11px;
+    cursor:pointer;
+    font-weight:600;
+    color:#172033;
+}
+
+.sub-service-btn:hover{
+    background:#eff6ff;
+    border-color:#93c5fd;
 }
 
 .form-group{
@@ -412,111 +311,139 @@ header{
 
 .form-group label{
     display:block;
-    font-size:14px;
+    margin-bottom:7px;
     font-weight:700;
-    margin-bottom:6px;
+    font-size:14px;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select{
     width:100%;
-    border:1px solid #dce2eb;
-    border-radius:9px;
-    padding:12px;
+    padding:12px 13px;
+    border:1px solid #d9e1eb;
+    border-radius:10px;
     outline:none;
     background:#fff;
-    font-size:14px;
-}
-
-.form-group input{
-    height:46px;
-}
-
-.form-group textarea{
-    min-height:85px;
-    resize:vertical;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus{
-    border-color:#1167d8;
+    border-color:#2563eb;
 }
 
-.dynamic-fields{
-    display:none;
+.form-group textarea{
+    min-height:90px;
+    resize:vertical;
 }
 
-.dynamic-fields.show{
-    display:block;
+.form-title{
+    margin-bottom:18px;
+}
+
+.form-title h3{
+    margin-bottom:5px;
+}
+
+.form-title p{
+    color:#667085;
+    font-size:14px;
+}
+
+.charge-display{
+    background:#eff6ff;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.charge-display strong{
+    color:#2563eb;
+    font-size:20px;
 }
 
 .submit-btn{
     width:100%;
-    height:48px;
     border:0;
+    background:#16a34a;
+    color:white;
+    padding:13px;
     border-radius:10px;
-    background:#1167d8;
-    color:#fff;
-    font-weight:800;
-    font-size:15px;
     cursor:pointer;
-    margin-top:5px;
+    font-weight:800;
 }
 
 .submit-btn:hover{
-    background:#0d56b5;
+    background:#15803d;
+}
+
+.submit-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+.back-btn{
+    border:0;
+    background:#f1f5f9;
+    padding:9px 14px;
+    border-radius:9px;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+
+.success-box{
+    text-align:center;
+    padding:20px 5px;
+}
+
+.success-icon{
+    font-size:55px;
+    margin-bottom:12px;
+}
+
+.success-box h2{
+    margin-bottom:10px;
+}
+
+.success-box p{
+    color:#667085;
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.request-number{
+    background:#f0fdf4;
+    color:#166534;
+    padding:13px;
+    border-radius:10px;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.done-btn{
+    border:0;
+    background:#2563eb;
+    color:white;
+    padding:11px 20px;
+    border-radius:9px;
+    cursor:pointer;
 }
 
 footer{
-    background:#101827;
-    color:#fff;
-    padding:40px 0 20px;
-}
-
-.footer-content{
-    display:grid;
-    grid-template-columns:1.5fr 1fr 1fr;
-    gap:30px;
-    padding-bottom:30px;
-}
-
-.footer-logo{
-    color:#fff;
-    margin-bottom:12px;
-}
-
-.footer-content p{
-    color:#aeb8c8;
-    font-size:14px;
-}
-
-.footer-title{
-    margin-bottom:12px;
-    font-size:16px;
-}
-
-.footer-links{
-    list-style:none;
-}
-
-.footer-links li{
-    margin-bottom:8px;
-    color:#aeb8c8;
-    font-size:14px;
-}
-
-.footer-links a{
-    color:#aeb8c8;
-}
-
-.copyright{
-    border-top:1px solid #273142;
-    padding-top:18px;
+    background:#172033;
+    color:white;
     text-align:center;
-    color:#9aa5b6;
-    font-size:13px;
+    padding:30px 20px;
+}
+
+footer p{
+    color:#cbd5e1;
+    font-size:14px;
+    margin-top:7px;
 }
 
 @media(max-width:900px){
@@ -525,1558 +452,1347 @@ footer{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .footer-content{
-        grid-template-columns:1fr 1fr;
-    }
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
 
-    .menu-btn{
-        display:block;
+    .navbar{
+        padding:13px 15px;
     }
 
     .nav-links{
-        position:absolute;
-        top:64px;
-        left:0;
-        right:0;
-        background:#fff;
-        display:none;
-        flex-direction:column;
-        padding:10px;
-        border-top:1px solid #eee;
-        box-shadow:0 10px 25px rgba(0,0,0,.08);
+        gap:12px;
+        font-size:13px;
     }
 
-    .nav-links.show{
-        display:flex;
+    .hero{
+        padding:40px 18px 25px;
     }
 
-    .nav-links a{
-        padding:12px;
-    }
-
-    .page-header{
-        padding:40px 0;
-    }
-
-    .page-header h1{
-        font-size:30px;
-    }
-
-    .services-section{
-        padding:40px 0 55px;
+    .hero h1{
+        font-size:27px;
     }
 
     .services-grid{
         grid-template-columns:1fr;
     }
 
-    .toolbar{
-        display:block;
+    .services-section{
+        padding-left:15px;
+        padding-right:15px;
     }
 
-    .filters{
-        margin-top:10px;
-        overflow-x:auto;
-        flex-wrap:nowrap;
-        padding-bottom:5px;
-    }
-
-    .filter-btn{
-        white-space:nowrap;
-    }
-
-    .footer-content{
-        grid-template-columns:1fr;
+    .modal{
+        padding:10px;
     }
 
     .modal-box{
-        padding:20px;
+        padding:18px;
+        border-radius:16px;
     }
+
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <div class="container navbar">
+<nav class="navbar">
 
-        <a href="index.html" class="logo">
-            <span class="logo-icon">DS</span>
-            <span>ডিজিটাল সেবা</span>
-        </a>
+    <a href="index.html" class="logo">
+        ডিজিটাল সেবা
+    </a>
 
-        <button class="menu-btn" id="menuBtn">☰</button>
-
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">হোম</a></li>
-            <li><a href="services.html" class="active">সেবাসমূহ</a></li>
-            <li><a href="index.html#process">কিভাবে কাজ করে</a></li>
-            <li><a href="index.html#contact">যোগাযোগ</a></li>
-        </ul>
-
+    <div class="nav-links">
+        <a href="index.html">হোম</a>
+        <a href="services.html">সেবাসমূহ</a>
+        <a href="index.html#process">কিভাবে কাজ করে</a>
+        <a href="index.html#contact">যোগাযোগ</a>
     </div>
-</header>
 
-<section class="page-header">
-    <div class="container">
-        <h1>আমাদের সকল সেবা</h1>
-        <p>
-            আপনার প্রয়োজনীয় সেবা নির্বাচন করুন এবং প্রয়োজনীয় তথ্য দিয়ে
-            অনুরোধ জমা দিন।
-        </p>
-    </div>
+</nav>
+
+
+<section class="hero">
+
+    <h1>আমাদের সকল সেবা</h1>
+
+    <p>
+        প্রয়োজনীয় অনলাইন, ডকুমেন্ট, চাকরি ও ভ্রমণ সংক্রান্ত
+        সেবা সহজে গ্রহণ করুন।
+    </p>
+
 </section>
 
-<section class="services-section">
 
-<div class="container">
+<div class="notice">
 
-<div class="toolbar">
+    <strong>🔒 নিরাপত্তা নোট:</strong>
+    সরকারি বা ব্যক্তিগত তথ্য শুধুমাত্র বৈধ ও অনুমোদিত কাজে ব্যবহার করুন।
+    OTP, PIN, Password বা কোনো গোপন Login তথ্য এখানে জমা দেবেন না।
 
-    <div class="search">
+</div>
+
+
+<section class="search-area">
+
+    <div class="search-box">
+
         <input
             type="search"
             id="searchInput"
             placeholder="সেবা খুঁজুন..."
+            oninput="filterServices()"
         >
+
     </div>
 
-    <div class="filters">
 
-        <button class="filter-btn active" data-category="all">
+    <div class="categories">
+
+        <button
+            class="category-btn active"
+            data-category="all"
+            onclick="selectCategory('all',this)"
+        >
             সব
         </button>
 
-        <button class="filter-btn" data-category="document">
+        <button
+            class="category-btn"
+            data-category="ডকুমেন্ট"
+            onclick="selectCategory('ডকুমেন্ট',this)"
+        >
             ডকুমেন্ট
         </button>
 
-        <button class="filter-btn" data-category="travel">
+        <button
+            class="category-btn"
+            data-category="ভ্রমণ"
+            onclick="selectCategory('ভ্রমণ',this)"
+        >
             ভ্রমণ
         </button>
 
-        <button class="filter-btn" data-category="job">
+        <button
+            class="category-btn"
+            data-category="চাকরি"
+            onclick="selectCategory('চাকরি',this)"
+        >
             চাকরি
         </button>
 
-        <button class="filter-btn" data-category="online">
+        <button
+            class="category-btn"
+            data-category="অনলাইন"
+            onclick="selectCategory('অনলাইন',this)"
+        >
             অনলাইন
         </button>
 
     </div>
 
-</div>
+</section>
 
-<div class="service-count" id="serviceCount">
-    মোট ১৬টি সেবা
-</div>
 
-<div class="services-grid" id="servicesGrid">
+<section class="services-section">
 
-<div class="service-card" data-category="document" data-name="nid জাতীয় পরিচয়পত্র">
+    <div
+        class="services-grid"
+        id="servicesContainer"
+    >
 
-    <div class="service-top">
-        <div class="service-icon">🪪</div>
-        <span class="category">ডকুমেন্ট</span>
-    </div>
-
-    <h3>NID / জাতীয় পরিচয়পত্র</h3>
-
-    <p>
-        NID সম্পর্কিত বিভিন্ন অনলাইন সেবায় সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ১০০+
-            <small>সেবা অনুযায়ী</small>
+        <div class="loading">
+            ⏳ সেবা লোড হচ্ছে...
         </div>
 
-        <button
-            class="service-btn"
-            data-service="NID / জাতীয় পরিচয়পত্র"
-            data-type="nid"
-        >
-            সেবা নিন
-        </button>
     </div>
-
-</div>
-
-<div class="service-card" data-category="document" data-name="জন্মনিবন্ধন">
-
-    <div class="service-top">
-        <div class="service-icon">📄</div>
-        <span class="category">ডকুমেন্ট</span>
-    </div>
-
-    <h3>জন্মনিবন্ধন</h3>
-
-    <p>
-        জন্মনিবন্ধন সংক্রান্ত অনলাইন প্রক্রিয়ায় সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ১০০+
-            <small>সেবা অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="জন্মনিবন্ধন"
-            data-type="birth"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="online" data-name="মোবাইল তথ্য সহায়তা">
-
-    <div class="service-top">
-        <div class="service-icon">📱</div>
-        <span class="category">অনলাইন</span>
-    </div>
-
-    <h3>মোবাইল তথ্য সহায়তা</h3>
-
-    <p>
-        নিজের সংযোগের বৈধ তথ্য যাচাইয়ে সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ৫০+
-            <small>সেবা অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="মোবাইল তথ্য সহায়তা"
-            data-type="mobile"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="travel" data-name="ট্যুর প্ল্যান">
-
-    <div class="service-top">
-        <div class="service-icon">🗺️</div>
-        <span class="category">ভ্রমণ</span>
-    </div>
-
-    <h3>ট্যুর প্ল্যান</h3>
-
-    <p>
-        বাজেট ও সময় অনুযায়ী ভ্রমণ পরিকল্পনা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ৩০০+
-            <small>প্যাকেজ অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="ট্যুর প্ল্যান"
-            data-type="tour"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="travel" data-name="হোটেল বুকিং">
-
-    <div class="service-top">
-        <div class="service-icon">🏨</div>
-        <span class="category">ভ্রমণ</span>
-    </div>
-
-    <h3>হোটেল বুকিং</h3>
-
-    <p>
-        প্রয়োজন অনুযায়ী হোটেল খোঁজা ও বুকিং সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ২০০+
-            <small>বুকিং অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="হোটেল বুকিং"
-            data-type="hotel"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="job" data-name="চাকরি খোঁজা">
-
-    <div class="service-top">
-        <div class="service-icon">💼</div>
-        <span class="category">চাকরি</span>
-    </div>
-
-    <h3>চাকরি খোঁজা</h3>
-
-    <p>
-        চাকরি খোঁজা ও আবেদন প্রক্রিয়ায় সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ২০০+
-            <small>সেবা অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="চাকরি খোঁজা"
-            data-type="job"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="travel" data-name="ট্রেন টিকেট">
-
-    <div class="service-top">
-        <div class="service-icon">🚆</div>
-        <span class="category">ভ্রমণ</span>
-    </div>
-
-    <h3>ট্রেন টিকেট</h3>
-
-    <p>
-        ট্রেনের সময়সূচি ও টিকেট সংক্রান্ত সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ১০০+
-            <small>সেবা অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="ট্রেন টিকেট"
-            data-type="train"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="travel" data-name="বিমান টিকেট">
-
-    <div class="service-top">
-        <div class="service-icon">✈️</div>
-        <span class="category">ভ্রমণ</span>
-    </div>
-
-    <h3>বিমান টিকেট</h3>
-
-    <p>
-        ফ্লাইট খোঁজা ও টিকেট সংক্রান্ত সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ৩০০+
-            <small>সেবা অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="বিমান টিকেট"
-            data-type="flight"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="document" data-name="পাসপোর্ট">
-
-    <div class="service-top">
-        <div class="service-icon">📘</div>
-        <span class="category">ডকুমেন্ট</span>
-    </div>
-
-    <h3>পাসপোর্ট সেবা</h3>
-
-    <p>
-        পাসপোর্ট আবেদন ও তথ্য সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ২০০+
-            <small>সেবা অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="পাসপোর্ট সেবা"
-            data-type="passport"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="document" data-name="ভিসা তথ্য">
-
-    <div class="service-top">
-        <div class="service-icon">🌍</div>
-        <span class="category">ডকুমেন্ট</span>
-    </div>
-
-    <h3>ভিসা তথ্য</h3>
-
-    <p>
-        ভিসা সংক্রান্ত তথ্য ও প্রক্রিয়ায় সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ২০০+
-            <small>সেবা অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="ভিসা তথ্য"
-            data-type="visa"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="online" data-name="অনলাইন ফর্ম">
-
-    <div class="service-top">
-        <div class="service-icon">📝</div>
-        <span class="category">অনলাইন</span>
-    </div>
-
-    <h3>অনলাইন ফর্ম</h3>
-
-    <p>
-        বিভিন্ন অনলাইন ফর্ম পূরণে সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ১০০+
-            <small>ফর্ম অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="অনলাইন ফর্ম"
-            data-type="form"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="online" data-name="pdf ডকুমেন্ট">
-
-    <div class="service-top">
-        <div class="service-icon">📑</div>
-        <span class="category">অনলাইন</span>
-    </div>
-
-    <h3>PDF ও ডকুমেন্ট</h3>
-
-    <p>
-        PDF তৈরি, কনভার্ট ও ডকুমেন্ট সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ৫০+
-            <small>কাজ অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="PDF ও ডকুমেন্ট"
-            data-type="pdf"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="online" data-name="শিক্ষা সেবা">
-
-    <div class="service-top">
-        <div class="service-icon">🎓</div>
-        <span class="category">অনলাইন</span>
-    </div>
-
-    <h3>শিক্ষা সেবা</h3>
-
-    <p>
-        শিক্ষা সংক্রান্ত অনলাইন তথ্য ও ফর্ম সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ১০০+
-            <small>সেবা অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="শিক্ষা সেবা"
-            data-type="education"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="online" data-name="অনলাইন তথ্য">
-
-    <div class="service-top">
-        <div class="service-icon">🔎</div>
-        <span class="category">অনলাইন</span>
-    </div>
-
-    <h3>অনলাইন তথ্য খোঁজা</h3>
-
-    <p>
-        প্রয়োজনীয় অনলাইন তথ্য খুঁজে পেতে সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ৫০+
-            <small>কাজ অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="অনলাইন তথ্য খোঁজা"
-            data-type="search"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-<div class="service-card" data-category="other" data-name="ডিজিটাল পেমেন্ট">
-
-    <div class="service-top">
-        <div class="service-icon">💳</div>
-        <span class="category">অন্যান্য</span>
-    </div>
-
-    <h3>ডিজিটাল পেমেন্ট</h3>
-
-    <p>
-        বৈধ ডিজিটাল পেমেন্ট প্রক্রিয়ায় সহায়তা।
-    </p>
-
-    <div class="service-bottom">
-        <div class="price">
-            ৳ ৫০+
-            <small>কাজ অনুযায়ী</small>
-        </div>
-
-        <button
-            class="service-btn"
-            data-service="ডিজিটাল পেমেন্ট"
-            data-type="payment"
-        >
-            সেবা নিন
-        </button>
-    </div>
-
-</div>
-
-</div>
-
-<div class="no-result" id="noResult">
-    কোনো সেবা পাওয়া যায়নি।
-</div>
-
-<div class="notice">
-    <strong>গুরুত্বপূর্ণ:</strong>
-    সরকারি বা ব্যক্তিগত তথ্যের ক্ষেত্রে শুধুমাত্র বৈধ ও অনুমোদিত
-    প্রক্রিয়ায় সহায়তা প্রদান করা হবে। OTP, PIN, পাসওয়ার্ড বা অন্যের
-    গোপন লগইন তথ্য এখানে জমা দেবেন না।
-</div>
-
-</div>
 
 </section>
 
-<div class="modal" id="serviceModal">
 
-<div class="modal-box">
+<div
+    class="modal"
+    id="subServiceModal"
+>
 
-<button class="close" id="closeModal">×</button>
+    <div class="modal-box">
 
-<div id="categorySection">
+        <div class="modal-header">
 
-    <h2 class="modal-title" id="categoryTitle">
-        সেবার ধরন নির্বাচন করুন
-    </h2>
+            <h2 id="subServiceTitle">
+                সেবা নির্বাচন করুন
+            </h2>
 
-    <p class="modal-text">
-        আপনার প্রয়োজনীয় কাজটি নির্বাচন করুন।
-    </p>
+            <button
+                class="close-btn"
+                onclick="closeModal('subServiceModal')"
+            >
+                ×
+            </button>
 
-    <div class="subservices" id="subservices"></div>
+        </div>
 
-</div>
+        <div
+            class="sub-services"
+            id="subServicesContainer"
+        ></div>
 
-<div class="form-section" id="formSection">
-
-    <button class="back-btn" id="backBtn">
-        ← পিছনে
-    </button>
-
-    <h2 class="modal-title">
-        সেবা জমা দিন
-    </h2>
-
-    <p class="modal-text">
-        প্রয়োজনীয় তথ্য পূরণ করুন।
-    </p>
-
-    <div class="selected-box">
-        <strong id="selectedService"></strong>
-        <span id="selectedSubService"></span>
     </div>
 
-    <form id="serviceForm">
+</div>
 
-        <div class="form-group">
-            <label>আপনার নাম</label>
-            <input
-                type="text"
-                id="name"
-                placeholder="পূর্ণ নাম"
-                required
-            >
-        </div>
 
-        <div class="form-group">
-            <label>WhatsApp নম্বর</label>
-            <input
-                type="tel"
-                id="whatsapp"
-                placeholder="01XXXXXXXXX"
-                required
-            >
-        </div>
+<div
+    class="modal"
+    id="formModal"
+>
 
-        <div class="form-group">
-            <label>ঠিকানা</label>
-            <textarea
-                id="address"
-                placeholder="আপনার ঠিকানা"
-                required
-            ></textarea>
-        </div>
+    <div class="modal-box">
 
-        <div class="dynamic-fields" id="nidFields">
-
-            <div class="form-group">
-                <label>NID নম্বর</label>
-                <input
-                    type="text"
-                    id="nidNumber"
-                    placeholder="প্রয়োজনে NID নম্বর দিন"
-                >
-            </div>
-
-        </div>
-
-        <div class="dynamic-fields" id="birthFields">
-
-            <div class="form-group">
-                <label>জন্মতারিখ</label>
-                <input
-                    type="date"
-                    id="birthDate"
-                >
-            </div>
-
-            <div class="form-group">
-                <label>জন্মনিবন্ধন নম্বর</label>
-                <input
-                    type="text"
-                    id="birthNumber"
-                    placeholder="প্রযোজ্য হলে"
-                >
-            </div>
-
-        </div>
-
-        <div class="dynamic-fields" id="travelFields">
-
-            <div class="form-group">
-                <label>গন্তব্য</label>
-                <input
-                    type="text"
-                    id="destination"
-                    placeholder="যেমন: কক্সবাজার"
-                >
-            </div>
-
-            <div class="form-group">
-                <label>ভ্রমণের তারিখ</label>
-                <input
-                    type="date"
-                    id="travelDate"
-                >
-            </div>
-
-        </div>
-
-        <div class="dynamic-fields" id="jobFields">
-
-            <div class="form-group">
-                <label>কাজের ধরন</label>
-                <input
-                    type="text"
-                    id="jobType"
-                    placeholder="যেমন: Hotel, Driver, Office"
-                >
-            </div>
-
-            <div class="form-group">
-                <label>পছন্দের দেশ</label>
-                <input
-                    type="text"
-                    id="jobCountry"
-                    placeholder="যেমন: বাংলাদেশ, সৌদি আরব"
-                >
-            </div>
-
-        </div>
-
-        <div class="dynamic-fields" id="hotelFields">
-
-            <div class="form-group">
-                <label>হোটেল/শহর</label>
-                <input
-                    type="text"
-                    id="hotelLocation"
-                    placeholder="হোটেল বা শহরের নাম"
-                >
-            </div>
-
-            <div class="form-group">
-                <label>চেক-ইন তারিখ</label>
-                <input
-                    type="date"
-                    id="checkIn"
-                >
-            </div>
-
-            <div class="form-group">
-                <label>চেক-আউট তারিখ</label>
-                <input
-                    type="date"
-                    id="checkOut"
-                >
-            </div>
-
-        </div>
-
-        <div class="dynamic-fields" id="ticketFields">
-
-            <div class="form-group">
-                <label>যাত্রার স্থান</label>
-                <input
-                    type="text"
-                    id="fromPlace"
-                    placeholder="কোথা থেকে"
-                >
-            </div>
-
-            <div class="form-group">
-                <label>গন্তব্য</label>
-                <input
-                    type="text"
-                    id="toPlace"
-                    placeholder="কোথায় যাবেন"
-                >
-            </div>
-
-            <div class="form-group">
-                <label>যাত্রার তারিখ</label>
-                <input
-                    type="date"
-                    id="ticketDate"
-                >
-            </div>
-
-        </div>
-
-        <div class="dynamic-fields" id="passportFields">
-
-            <div class="form-group">
-                <label>পাসপোর্টের ধরন</label>
-
-                <select id="passportType">
-                    <option value="">নির্বাচন করুন</option>
-                    <option>নতুন পাসপোর্ট</option>
-                    <option>পাসপোর্ট নবায়ন</option>
-                    <option>পাসপোর্ট তথ্য সংশোধন</option>
-                </select>
-
-            </div>
-
-        </div>
-
-        <div class="dynamic-fields" id="visaFields">
-
-            <div class="form-group">
-                <label>কোন দেশের ভিসা?</label>
-
-                <input
-                    type="text"
-                    id="visaCountry"
-                    placeholder="দেশের নাম"
-                >
-
-            </div>
-
-            <div class="form-group">
-                <label>ভিসার ধরন</label>
-
-                <select id="visaType">
-                    <option value="">নির্বাচন করুন</option>
-                    <option>Tourist</option>
-                    <option>Work</option>
-                    <option>Student</option>
-                    <option>Business</option>
-                </select>
-
-            </div>
-
-        </div>
-
-        <div class="form-group">
-
-            <label>অতিরিক্ত তথ্য</label>
-
-            <textarea
-                id="details"
-                placeholder="আপনার কাজ সম্পর্কে অতিরিক্ত কিছু থাকলে লিখুন"
-            ></textarea>
-
-        </div>
-
-        <button type="submit" class="submit-btn">
-            সেবা জমা দিন
+        <button
+            class="back-btn"
+            onclick="backToSubServices()"
+        >
+            ← পিছনে
         </button>
 
-    </form>
+        <div class="form-title">
+
+            <h3 id="formServiceTitle"></h3>
+
+            <p id="formSubServiceTitle"></p>
+
+        </div>
+
+
+        <div class="charge-display">
+
+            <span>সেবা চার্জ</span>
+
+            <strong id="formCharge">
+                ৳0
+            </strong>
+
+        </div>
+
+
+        <form id="serviceForm">
+
+            <div class="form-group">
+
+                <label>
+                    আপনার নাম *
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    required
+                    placeholder="পূর্ণ নাম লিখুন"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    WhatsApp / মোবাইল নম্বর *
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerWhatsapp"
+                    required
+                    placeholder="01XXXXXXXXX"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    ঠিকানা
+                </label>
+
+                <input
+                    type="text"
+                    id="customerAddress"
+                    placeholder="আপনার ঠিকানা"
+                >
+
+            </div>
+
+
+            <div id="dynamicFields"></div>
+
+
+            <div class="form-group">
+
+                <label>
+                    অতিরিক্ত তথ্য
+                </label>
+
+                <textarea
+                    id="additionalDetails"
+                    placeholder="প্রয়োজনীয় অতিরিক্ত তথ্য লিখুন"
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-btn"
+                id="submitBtn"
+            >
+                সেবা জমা দিন
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
 
-</div>
+
+<div
+    class="modal"
+    id="successModal"
+>
+
+    <div class="modal-box">
+
+        <div class="success-box">
+
+            <div class="success-icon">
+                ✅
+            </div>
+
+            <h2>
+                আবেদন সফল হয়েছে
+            </h2>
+
+            <p>
+                আপনার সেবা আবেদন সফলভাবে গ্রহণ করা হয়েছে।
+                Admin আপনার আবেদন দেখে প্রয়োজনীয় ব্যবস্থা নেবে।
+            </p>
+
+            <div
+                class="request-number"
+                id="successRequestNumber"
+            ></div>
+
+            <button
+                class="done-btn"
+                onclick="closeSuccess()"
+            >
+                ঠিক আছে
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
+
 
 <footer>
 
-<div class="container">
+    <h3>ডিজিটাল সেবা কেন্দ্র</h3>
 
-<div class="footer-content">
-
-<div>
-
-<a href="index.html" class="logo footer-logo">
-    <span class="logo-icon">DS</span>
-    <span>ডিজিটাল সেবা</span>
-</a>
-
-<p>
-    বিভিন্ন অনলাইন সেবা ও তথ্য প্রক্রিয়ায়
-    সহজ ও দায়িত্বশীল সহায়তা।
-</p>
-
-</div>
-
-<div>
-
-<h3 class="footer-title">দ্রুত লিংক</h3>
-
-<ul class="footer-links">
-    <li><a href="index.html">হোম</a></li>
-    <li><a href="services.html">সেবাসমূহ</a></li>
-    <li><a href="index.html#process">কিভাবে কাজ করে</a></li>
-    <li><a href="index.html#contact">যোগাযোগ</a></li>
-</ul>
-
-</div>
-
-<div>
-
-<h3 class="footer-title">যোগাযোগ</h3>
-
-<ul class="footer-links">
-    <li>📱 01XXXXXXXXX</li>
-    <li>💬 WhatsApp</li>
-    <li>📍 বাংলাদেশ</li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="copyright">
-    © 2026 ডিজিটাল সেবা — সর্বস্বত্ব সংরক্ষিত।
-</div>
-
-</div>
+    <p>
+        দ্রুত ও সহজ অনলাইন সেবা
+    </p>
 
 </footer>
 
+
 <script>
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+const SUPABASE_URL =
+    "https://mulroqtysdawvwdrpdxt.supabase.co";
 
-menuBtn.addEventListener("click",()=>{
-    navLinks.classList.toggle("show");
-});
+const SUPABASE_ANON_KEY =
+    "sb_publishable_-v7fU5dwzz0LddbM-f87PQ_-L1BH-bl";
 
-document.querySelectorAll(".nav-links a").forEach(link=>{
-    link.addEventListener("click",()=>{
-        navLinks.classList.remove("show");
-    });
-});
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
 
-const searchInput = document.getElementById("searchInput");
-const filterButtons = document.querySelectorAll(".filter-btn");
-const cards = document.querySelectorAll(".service-card");
-const serviceCount = document.getElementById("serviceCount");
-const noResult = document.getElementById("noResult");
 
-let selectedCategory = "all";
+let services = [];
 
-function filterServices(){
+let selectedService = null;
 
-    const search = searchInput.value.toLowerCase().trim();
+let selectedSubService = "";
 
-    let count = 0;
+let currentCategory = "all";
 
-    cards.forEach(card=>{
-
-        const category = card.dataset.category;
-        const name = card.dataset.name.toLowerCase();
-
-        const categoryMatch =
-            selectedCategory === "all" ||
-            category === selectedCategory;
-
-        const searchMatch =
-            name.includes(search);
-
-        if(categoryMatch && searchMatch){
-
-            card.style.display = "block";
-            count++;
-
-        }else{
-
-            card.style.display = "none";
-
-        }
-
-    });
-
-    serviceCount.textContent =
-        "দেখানো হচ্ছে " + count + "টি সেবা";
-
-    noResult.style.display =
-        count === 0 ? "block" : "none";
-}
-
-searchInput.addEventListener("input",filterServices);
-
-filterButtons.forEach(button=>{
-
-    button.addEventListener("click",()=>{
-
-        filterButtons.forEach(btn=>{
-            btn.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        selectedCategory =
-            button.dataset.category;
-
-        filterServices();
-
-    });
-
-});
-
-const modal =
-    document.getElementById("serviceModal");
-
-const closeModal =
-    document.getElementById("closeModal");
-
-const categorySection =
-    document.getElementById("categorySection");
-
-const formSection =
-    document.getElementById("formSection");
-
-const subservices =
-    document.getElementById("subservices");
-
-const categoryTitle =
-    document.getElementById("categoryTitle");
-
-const selectedService =
-    document.getElementById("selectedService");
-
-const selectedSubService =
-    document.getElementById("selectedSubService");
-
-const backBtn =
-    document.getElementById("backBtn");
-
-let currentService = "";
-let currentType = "";
-let currentSubService = "";
 
 const serviceCategories = {
 
-    nid: [
-
-        {
-            name:"NID অ্যাকাউন্ট সেটআপ",
-            price:"১০০",
-            description:"বৈধভাবে নিজের NID অনলাইন অ্যাকাউন্ট ব্যবহারে সহায়তা"
-        },
-
-        {
-            name:"NID ডাউনলোড",
-            price:"১০০",
-            description:"নিজের NID কপি ডাউনলোডে সহায়তা"
-        },
-
-        {
-            name:"NID তথ্য সংশোধন",
-            price:"২০০",
-            description:"তথ্য সংশোধনের আবেদন প্রক্রিয়ায় সহায়তা"
-        },
-
-        {
-            name:"NID স্ট্যাটাস চেক",
-            price:"৫০",
-            description:"নিজের আবেদনের স্ট্যাটাস যাচাইয়ে সহায়তা"
-        }
-
+    nid:[
+        "NID অ্যাকাউন্ট সেটআপ",
+        "NID ডাউনলোড",
+        "NID তথ্য সংশোধন",
+        "NID স্ট্যাটাস চেক"
     ],
 
-    birth: [
-
-        {
-            name:"নতুন জন্মনিবন্ধন",
-            price:"১০০",
-            description:"নতুন আবেদন প্রক্রিয়ায় সহায়তা"
-        },
-
-        {
-            name:"জন্মনিবন্ধন ডাউনলোড",
-            price:"৫০",
-            description:"সনদ ডাউনলোডে সহায়তা"
-        },
-
-        {
-            name:"জন্মনিবন্ধন সংশোধন",
-            price:"২০০",
-            description:"সংশোধন আবেদন প্রক্রিয়ায় সহায়তা"
-        },
-
-        {
-            name:"আবেদনের স্ট্যাটাস",
-            price:"৫০",
-            description:"আবেদনের বর্তমান অবস্থা যাচাই"
-        }
-
+    birth:[
+        "নতুন জন্মনিবন্ধন",
+        "জন্মনিবন্ধন ডাউনলোড",
+        "জন্মনিবন্ধন সংশোধন",
+        "আবেদনের স্ট্যাটাস"
     ],
 
-    mobile: [
-
-        {
-            name:"নিজের SIM তথ্য যাচাই",
-            price:"৫০",
-            description:"নিজের সংযোগের বৈধ তথ্য যাচাই"
-        },
-
-        {
-            name:"SIM সংক্রান্ত তথ্য",
-            price:"৫০",
-            description:"নিজের SIM সংক্রান্ত তথ্য সহায়তা"
-        }
-
+    mobile:[
+        "নিজের SIM তথ্য যাচাই",
+        "SIM সংক্রান্ত তথ্য"
     ],
 
-    tour: [
-
-        {
-            name:"দেশের ভিতরে ট্যুর",
-            price:"৩০০",
-            description:"বাংলাদেশের ভ্রমণ পরিকল্পনা"
-        },
-
-        {
-            name:"বিদেশ ভ্রমণ",
-            price:"৫০০",
-            description:"বিদেশ ভ্রমণের পরিকল্পনা"
-        },
-
-        {
-            name:"ফ্যামিলি ট্যুর",
-            price:"৩০০",
-            description:"পরিবারের জন্য ভ্রমণ পরিকল্পনা"
-        }
-
+    tour:[
+        "দেশের ভিতরে ট্যুর",
+        "বিদেশ ভ্রমণ",
+        "ফ্যামিলি ট্যুর"
     ],
 
-    hotel: [
-
-        {
-            name:"দেশের হোটেল",
-            price:"২০০",
-            description:"দেশের বিভিন্ন হোটেল খোঁজা ও বুকিং সহায়তা"
-        },
-
-        {
-            name:"বিদেশের হোটেল",
-            price:"৩০০",
-            description:"বিদেশের হোটেল খোঁজা ও বুকিং সহায়তা"
-        }
-
+    hotel:[
+        "দেশের হোটেল",
+        "বিদেশের হোটেল"
     ],
 
-    job: [
-
-        {
-            name:"বাংলাদেশের চাকরি",
-            price:"২০০",
-            description:"দেশের চাকরি খোঁজা ও আবেদন সহায়তা"
-        },
-
-        {
-            name:"বিদেশের চাকরি",
-            price:"৩০০",
-            description:"বিদেশি চাকরি খোঁজা ও আবেদন সহায়তা"
-        },
-
-        {
-            name:"CV / Resume",
-            price:"২০০",
-            description:"পেশাদার CV তৈরিতে সহায়তা"
-        }
-
+    job:[
+        "বাংলাদেশের চাকরি",
+        "বিদেশের চাকরি",
+        "CV / Resume"
     ],
 
-    train: [
-
-        {
-            name:"একক ট্রেন টিকেট",
-            price:"১০০",
-            description:"ট্রেন টিকেট সংক্রান্ত সহায়তা"
-        },
-
-        {
-            name:"রিটার্ন ট্রেন টিকেট",
-            price:"১৫০",
-            description:"আসা-যাওয়ার টিকেট সহায়তা"
-        }
-
+    train:[
+        "একক ট্রেন টিকেট",
+        "রিটার্ন ট্রেন টিকেট"
     ],
 
-    flight: [
-
-        {
-            name:"দেশীয় ফ্লাইট",
-            price:"৩০০",
-            description:"দেশীয় ফ্লাইট খোঁজা ও টিকেট সহায়তা"
-        },
-
-        {
-            name:"আন্তর্জাতিক ফ্লাইট",
-            price:"৫০০",
-            description:"আন্তর্জাতিক ফ্লাইট খোঁজা ও টিকেট সহায়তা"
-        }
-
+    flight:[
+        "দেশীয় ফ্লাইট",
+        "আন্তর্জাতিক ফ্লাইট"
     ],
 
-    passport: [
-
-        {
-            name:"নতুন পাসপোর্ট",
-            price:"২০০",
-            description:"আবেদন প্রক্রিয়ায় সহায়তা"
-        },
-
-        {
-            name:"পাসপোর্ট নবায়ন",
-            price:"২০০",
-            description:"নবায়ন প্রক্রিয়ায় সহায়তা"
-        },
-
-        {
-            name:"পাসপোর্ট সংশোধন",
-            price:"৩০০",
-            description:"সংশোধন প্রক্রিয়ায় সহায়তা"
-        }
-
+    passport:[
+        "নতুন পাসপোর্ট",
+        "পাসপোর্ট নবায়ন",
+        "পাসপোর্ট সংশোধন"
     ],
 
-    visa: [
-
-        {
-            name:"Tourist Visa",
-            price:"৩০০",
-            description:"পর্যটন ভিসা তথ্য ও আবেদন সহায়তা"
-        },
-
-        {
-            name:"Work Visa",
-            price:"৫০০",
-            description:"কাজের ভিসা সংক্রান্ত তথ্য সহায়তা"
-        },
-
-        {
-            name:"Student Visa",
-            price:"৫০০",
-            description:"শিক্ষার্থী ভিসা সংক্রান্ত তথ্য সহায়তা"
-        }
-
+    visa:[
+        "Tourist Visa",
+        "Work Visa",
+        "Student Visa"
     ],
 
-    form: [
-
-        {
-            name:"সরকারি অনলাইন ফর্ম",
-            price:"১০০",
-            description:"অনলাইন ফর্ম পূরণে সহায়তা"
-        },
-
-        {
-            name:"চাকরির আবেদন ফর্ম",
-            price:"১০০",
-            description:"চাকরির আবেদন পূরণে সহায়তা"
-        },
-
-        {
-            name:"অন্যান্য অনলাইন ফর্ম",
-            price:"১০০",
-            description:"অন্যান্য ফর্ম পূরণে সহায়তা"
-        }
-
+    form:[
+        "সরকারি অনলাইন ফর্ম",
+        "চাকরির আবেদন ফর্ম",
+        "অন্যান্য অনলাইন ফর্ম"
     ],
 
-    pdf: [
-
-        {
-            name:"PDF তৈরি",
-            price:"৫০",
-            description:"PDF তৈরি ও সাজাতে সহায়তা"
-        },
-
-        {
-            name:"PDF Convert",
-            price:"৫০",
-            description:"PDF কনভার্টে সহায়তা"
-        }
-
+    pdf:[
+        "PDF তৈরি",
+        "PDF Convert"
     ],
 
-    education: [
-
-        {
-            name:"অনলাইন ভর্তি",
-            price:"১০০",
-            description:"অনলাইন ভর্তি প্রক্রিয়ায় সহায়তা"
-        },
-
-        {
-            name:"শিক্ষা ফর্ম",
-            price:"১০০",
-            description:"শিক্ষা সংক্রান্ত ফর্ম পূরণে সহায়তা"
-        }
-
+    education:[
+        "অনলাইন ভর্তি",
+        "শিক্ষা ফর্ম"
     ],
 
-    search: [
-
-        {
-            name:"তথ্য খোঁজা",
-            price:"৫০",
-            description:"প্রয়োজনীয় বৈধ তথ্য খুঁজে দিতে সহায়তা"
-        }
-
+    search:[
+        "তথ্য খোঁজা"
     ],
 
-    payment: [
-
-        {
-            name:"ডিজিটাল পেমেন্ট সহায়তা",
-            price:"৫০",
-            description:"বৈধ ডিজিটাল পেমেন্ট প্রক্রিয়ায় সহায়তা"
-        }
-
+    payment:[
+        "ডিজিটাল পেমেন্ট সহায়তা"
     ]
 
 };
 
-document.querySelectorAll(".service-btn").forEach(button=>{
 
-    button.addEventListener("click",()=>{
+async function loadServices(){
 
-        currentService = button.dataset.service;
-        currentType = button.dataset.type;
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("services")
+        .select("*")
+        .eq("active",true)
+        .order("created_at");
 
-        categoryTitle.textContent =
-            currentService + " — সেবার ধরন";
+    if(error){
 
-        subservices.innerHTML = "";
+        console.error(error);
 
-        const categories =
-            serviceCategories[currentType] || [];
-
-        categories.forEach(item=>{
-
-            const div =
-                document.createElement("button");
-
-            div.type = "button";
-            div.className = "subservice";
-
-            div.innerHTML = `
-                <div class="subservice-info">
-                    <strong>${item.name}</strong>
-                    <span>${item.description}</span>
-                </div>
-
-                <div class="subservice-price">
-                    ৳ ${item.price}
-                </div>
-            `;
-
-            div.addEventListener("click",()=>{
-
-                currentSubService = item.name;
-
-                selectedService.textContent =
-                    currentService;
-
-                selectedSubService.textContent =
-                    item.name + " • সেবা চার্জ ৳ " + item.price;
-
-                categorySection.style.display =
-                    "none";
-
-                formSection.classList.add("show");
-
-                showDynamicFields(currentType);
-
-            });
-
-            subservices.appendChild(div);
-
-        });
-
-        categorySection.style.display = "block";
-        formSection.classList.remove("show");
-
-        modal.classList.add("show");
-
-        document.body.style.overflow = "hidden";
-
-    });
-
-});
-
-function showDynamicFields(type){
-
-    document.querySelectorAll(".dynamic-fields")
-        .forEach(field=>{
-            field.classList.remove("show");
-        });
-
-    if(type === "nid"){
-        document.getElementById("nidFields")
-            .classList.add("show");
-    }
-
-    if(type === "birth"){
-        document.getElementById("birthFields")
-            .classList.add("show");
-    }
-
-    if(type === "tour"){
-        document.getElementById("travelFields")
-            .classList.add("show");
-    }
-
-    if(type === "job"){
-        document.getElementById("jobFields")
-            .classList.add("show");
-    }
-
-    if(type === "hotel"){
-        document.getElementById("hotelFields")
-            .classList.add("show");
-    }
-
-    if(type === "train" || type === "flight"){
-        document.getElementById("ticketFields")
-            .classList.add("show");
-    }
-
-    if(type === "passport"){
-        document.getElementById("passportFields")
-            .classList.add("show");
-    }
-
-    if(type === "visa"){
-        document.getElementById("visaFields")
-            .classList.add("show");
-    }
-
-}
-
-backBtn.addEventListener("click",()=>{
-
-    formSection.classList.remove("show");
-
-    categorySection.style.display =
-        "block";
-
-});
-
-function closeServiceModal(){
-
-    modal.classList.remove("show");
-
-    document.body.style.overflow = "";
-
-    serviceForm.reset();
-
-    formSection.classList.remove("show");
-
-    categorySection.style.display = "block";
-
-}
-
-closeModal.addEventListener(
-    "click",
-    closeServiceModal
-);
-
-modal.addEventListener("click",event=>{
-
-    if(event.target === modal){
-        closeServiceModal();
-    }
-
-});
-
-serviceForm.addEventListener("submit",event=>{
-
-    event.preventDefault();
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const whatsapp =
-        document.getElementById("whatsapp").value.trim();
-
-    const address =
-        document.getElementById("address").value.trim();
-
-    const details =
-        document.getElementById("details").value.trim();
-
-    if(!name || !whatsapp || !address){
-
-        alert("দয়া করে নাম, WhatsApp নম্বর ও ঠিকানা পূরণ করুন।");
+        document.getElementById(
+            "servicesContainer"
+        ).innerHTML = `
+            <div class="empty">
+                ❌ সেবা লোড করা যাচ্ছে না।
+                <br><br>
+                ${escapeHtml(error.message)}
+            </div>
+        `;
 
         return;
+    }
+
+    services = data || [];
+
+    renderServices();
+
+}
+
+
+function renderServices(){
+
+    const container =
+        document.getElementById(
+            "servicesContainer"
+        );
+
+    const search =
+        document.getElementById(
+            "searchInput"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        services.filter(service => {
+
+            const categoryMatch =
+                currentCategory === "all" ||
+                service.category === currentCategory;
+
+            const searchMatch =
+                !search ||
+                service.service_name
+                    .toLowerCase()
+                    .includes(search) ||
+                service.description
+                    ?.toLowerCase()
+                    .includes(search);
+
+            return categoryMatch && searchMatch;
+
+        });
+
+
+    if(!filtered.length){
+
+        container.innerHTML = `
+            <div class="empty">
+                🔎 কোনো সেবা পাওয়া যায়নি।
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        filtered.map(service => {
+
+            const charge =
+                Number(service.charge || 0);
+
+            return `
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    ${escapeHtml(service.icon || "🛠️")}
+                </div>
+
+                <h3>
+                    ${escapeHtml(service.service_name)}
+                </h3>
+
+                <p>
+                    ${escapeHtml(
+                        service.description || ""
+                    )}
+                </p>
+
+                <div class="service-bottom">
+
+                    <div class="charge">
+                        ৳${charge.toFixed(0)}+
+                    </div>
+
+                    <button
+                        class="service-btn"
+                        onclick="openSubServices('${service.id}')"
+                    >
+                        সেবা নিন
+                    </button>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+function selectCategory(category,button){
+
+    currentCategory = category;
+
+    document
+        .querySelectorAll(".category-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    button.classList.add("active");
+
+    renderServices();
+
+}
+
+
+function filterServices(){
+
+    renderServices();
+
+}
+
+
+function openSubServices(serviceId){
+
+    selectedService =
+        services.find(
+            service => service.id === serviceId
+        );
+
+    if(!selectedService){
+
+        alert("সেবা পাওয়া যায়নি।");
+
+        return;
+    }
+
+
+    const subServices =
+        serviceCategories[
+            selectedService.service_key
+        ] || [
+            "সাধারণ সেবা"
+        ];
+
+
+    document.getElementById(
+        "subServiceTitle"
+    ).textContent =
+        selectedService.service_name;
+
+
+    document.getElementById(
+        "subServicesContainer"
+    ).innerHTML =
+        subServices.map(item => {
+
+            return `
+
+            <button
+                class="sub-service-btn"
+                onclick='selectSubService(${JSON.stringify(item)})'
+            >
+                ${escapeHtml(item)}
+            </button>
+
+            `;
+
+        }).join("");
+
+
+    document
+        .getElementById("subServiceModal")
+        .classList.add("show");
+
+}
+
+
+function selectSubService(subService){
+
+    selectedSubService =
+        subService;
+
+    closeModal("subServiceModal");
+
+    openForm();
+
+}
+
+
+function openForm(){
+
+    if(!selectedService){
+
+        return;
+    }
+
+
+    document.getElementById(
+        "formServiceTitle"
+    ).textContent =
+        selectedService.service_name;
+
+
+    document.getElementById(
+        "formSubServiceTitle"
+    ).textContent =
+        selectedSubService;
+
+
+    document.getElementById(
+        "formCharge"
+    ).textContent =
+        "৳" +
+        Number(
+            selectedService.charge || 0
+        ).toFixed(0);
+
+
+    createDynamicFields();
+
+
+    document
+        .getElementById("formModal")
+        .classList.add("show");
+
+}
+
+
+function createDynamicFields(){
+
+    const container =
+        document.getElementById(
+            "dynamicFields"
+        );
+
+    const key =
+        selectedService.service_key;
+
+
+    let html = "";
+
+
+    if(key === "nid"){
+
+        html += field(
+            "nid_number",
+            "NID Number",
+            "text",
+            "NID নম্বর লিখুন"
+        );
 
     }
 
-    let message =
-        "নতুন সেবা অনুরোধ\n\n" +
-        "সেবা: " + currentService + "\n" +
-        "উপ-সেবা: " + currentSubService + "\n" +
-        "নাম: " + name + "\n" +
-        "WhatsApp: " + whatsapp + "\n" +
-        "ঠিকানা: " + address + "\n";
 
-    if(details){
-        message +=
-            "অতিরিক্ত তথ্য: " + details + "\n";
+    if(key === "birth"){
+
+        html += field(
+            "birth_date",
+            "জন্ম তারিখ",
+            "date",
+            ""
+        );
+
+        html += field(
+            "birth_registration_number",
+            "জন্মনিবন্ধন নম্বর",
+            "text",
+            "জন্মনিবন্ধন নম্বর"
+        );
+
     }
 
-    const yourWhatsAppNumber =
+
+    if(key === "mobile"){
+
+        html += field(
+            "mobile_number",
+            "নিজের মোবাইল নম্বর",
+            "tel",
+            "01XXXXXXXXX"
+        );
+
+    }
+
+
+    if(key === "tour"){
+
+        html += field(
+            "destination",
+            "ভ্রমণের স্থান",
+            "text",
+            "যেখানে যেতে চান"
+        );
+
+        html += field(
+            "travel_date",
+            "ভ্রমণের তারিখ",
+            "date",
+            ""
+        );
+
+    }
+
+
+    if(key === "hotel"){
+
+        html += field(
+            "hotel_city",
+            "হোটেল / শহর",
+            "text",
+            "শহর বা হোটেলের নাম"
+        );
+
+        html += field(
+            "check_in",
+            "Check In",
+            "date",
+            ""
+        );
+
+        html += field(
+            "check_out",
+            "Check Out",
+            "date",
+            ""
+        );
+
+    }
+
+
+    if(key === "job"){
+
+        html += field(
+            "job_type",
+            "চাকরির ধরন",
+            "text",
+            "যেমন: Hotel, Factory, Driver"
+        );
+
+        html += field(
+            "preferred_country",
+            "পছন্দের দেশ",
+            "text",
+            "যেমন: Bangladesh, Serbia, Finland"
+        );
+
+    }
+
+
+    if(key === "train"){
+
+        html += field(
+            "from",
+            "কোথা থেকে",
+            "text",
+            "যাত্রার স্থান"
+        );
+
+        html += field(
+            "destination",
+            "কোথায় যাবেন",
+            "text",
+            "গন্তব্য"
+        );
+
+        html += field(
+            "travel_date",
+            "যাত্রার তারিখ",
+            "date",
+            ""
+        );
+
+    }
+
+
+    if(key === "flight"){
+
+        html += field(
+            "from",
+            "কোথা থেকে",
+            "text",
+            "Departure"
+        );
+
+        html += field(
+            "destination",
+            "কোথায় যাবেন",
+            "text",
+            "Destination"
+        );
+
+        html += field(
+            "travel_date",
+            "যাত্রার তারিখ",
+            "date",
+            ""
+        );
+
+    }
+
+
+    if(key === "passport"){
+
+        html += `
+
+        <div class="form-group">
+
+            <label>
+                পাসপোর্টের ধরন
+            </label>
+
+            <select id="passport_type">
+
+                <option value="">
+                    নির্বাচন করুন
+                </option>
+
+                <option value="নতুন পাসপোর্ট">
+                    নতুন পাসপোর্ট
+                </option>
+
+                <option value="পাসপোর্ট নবায়ন">
+                    পাসপোর্ট নবায়ন
+                </option>
+
+                <option value="পাসপোর্ট সংশোধন">
+                    পাসপোর্ট সংশোধন
+                </option>
+
+            </select>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if(key === "visa"){
+
+        html += field(
+            "visa_country",
+            "কোন দেশের ভিসা",
+            "text",
+            "দেশের নাম"
+        );
+
+        html += `
+
+        <div class="form-group">
+
+            <label>
+                ভিসার ধরন
+            </label>
+
+            <select id="visa_type">
+
+                <option value="">
+                    নির্বাচন করুন
+                </option>
+
+                <option value="Tourist Visa">
+                    Tourist Visa
+                </option>
+
+                <option value="Work Visa">
+                    Work Visa
+                </option>
+
+                <option value="Student Visa">
+                    Student Visa
+                </option>
+
+            </select>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if(key === "form"){
+
+        html += field(
+            "form_name",
+            "ফর্মের নাম",
+            "text",
+            "যে ফর্মটি পূরণ করতে চান"
+        );
+
+    }
+
+
+    if(key === "education"){
+
+        html += field(
+            "education_institute",
+            "প্রতিষ্ঠানের নাম",
+            "text",
+            "প্রতিষ্ঠানের নাম"
+        );
+
+    }
+
+
+    container.innerHTML = html;
+
+}
+
+
+function field(
+    id,
+    label,
+    type,
+    placeholder
+){
+
+    return `
+
+    <div class="form-group">
+
+        <label>
+            ${escapeHtml(label)}
+        </label>
+
+        <input
+            type="${type}"
+            id="${id}"
+            placeholder="${escapeHtml(placeholder)}"
+        >
+
+    </div>
+
+    `;
+
+}
+
+
+document.getElementById(
+    "serviceForm"
+).addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+        await submitRequest();
+
+    }
+);
+
+
+async function submitRequest(){
+
+    if(!selectedService){
+
+        alert("সেবা নির্বাচন করুন।");
+
+        return;
+    }
+
+
+    const name =
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
+
+    const whatsapp =
+        document.getElementById(
+            "customerWhatsapp"
+        ).value.trim();
+
+
+    const address =
+        document.getElementById(
+            "customerAddress"
+        ).value.trim();
+
+
+    const additionalDetails =
+        document.getElementById(
+            "additionalDetails"
+        ).value.trim();
+
+
+    if(!name || !whatsapp){
+
+        alert(
+            "নাম এবং WhatsApp / মোবাইল নম্বর দিন।"
+        );
+
+        return;
+    }
+
+
+    const serviceData = {};
+
+
+    document
+        .querySelectorAll(
+            "#dynamicFields input, #dynamicFields select"
+        )
+        .forEach(element => {
+
+            if(element.value.trim()){
+
+                serviceData[
+                    element.id
+                ] = element.value.trim();
+
+            }
+
+        });
+
+
+    const submitButton =
+        document.getElementById(
+            "submitBtn"
+        );
+
+
+    submitButton.disabled = true;
+
+    submitButton.textContent =
+        "আবেদন জমা হচ্ছে...";
+
+
+    const { data, error } =
+        await supabaseClient
+        .from("service_requests")
+        .insert({
+
+            service_id:
+                selectedService.id,
+
+            service_key:
+                selectedService.service_key,
+
+            service_name:
+                selectedService.service_name,
+
+            sub_service:
+                selectedSubService,
+
+            name:
+                name,
+
+            whatsapp:
+                whatsapp,
+
+            address:
+                address,
+
+            service_data:
+                serviceData,
+
+            additional_details:
+                additionalDetails,
+
+            charge:
+                Number(
+                    selectedService.charge || 0
+                ),
+
+            status:
+                "pending"
+
+        })
+        .select("request_no")
+        .single();
+
+
+    submitButton.disabled = false;
+
+    submitButton.textContent =
+        "সেবা জমা দিন";
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "আবেদন জমা হয়নি।\n\n" +
+            error.message
+        );
+
+        return;
+    }
+
+
+    document.getElementById(
+        "formModal"
+    ).classList.remove("show");
+
+
+    document.getElementById(
+        "successRequestNumber"
+    ).textContent =
+        "আপনার Request Number: #" +
+        data.request_no;
+
+
+    document.getElementById(
+        "successModal"
+    ).classList.add("show");
+
+
+    sendWhatsAppNotification(
+        data.request_no,
+        name,
+        whatsapp,
+        selectedService.service_name,
+        selectedSubService
+    );
+
+
+    document.getElementById(
+        "serviceForm"
+    ).reset();
+
+}
+
+
+function sendWhatsAppNotification(
+    requestNo,
+    name,
+    whatsapp,
+    serviceName,
+    subService
+){
+
+    const adminWhatsApp =
         "8801XXXXXXXXX";
+
+
+    if(
+        adminWhatsApp.includes("XXXXXXXXX")
+    ){
+
+        return;
+    }
+
+
+    const message =
+        `নতুন Service Request%0A%0A` +
+        `Request: #${requestNo}%0A` +
+        `নাম: ${name}%0A` +
+        `WhatsApp: ${whatsapp}%0A` +
+        `Service: ${serviceName}%0A` +
+        `Category: ${subService}`;
+
 
     const url =
         "https://wa.me/" +
-        yourWhatsAppNumber +
+        adminWhatsApp +
         "?text=" +
-        encodeURIComponent(message);
+        message;
 
-    window.open(url,"_blank");
 
-    closeServiceModal();
+    window.open(
+        url,
+        "_blank"
+    );
 
-});
+}
 
-filterServices();
+
+function backToSubServices(){
+
+    document
+        .getElementById("formModal")
+        .classList.remove("show");
+
+
+    if(selectedService){
+
+        openSubServices(
+            selectedService.id
+        );
+
+    }
+
+}
+
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("show");
+
+}
+
+
+function closeSuccess(){
+
+    document
+        .getElementById("successModal")
+        .classList.remove("show");
+
+}
+
+
+function escapeHtml(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+window.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target.classList.contains(
+                "modal"
+            )
+        ){
+
+            event.target.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+loadServices();
 
 </script>
 
